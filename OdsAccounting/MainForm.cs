@@ -93,7 +93,15 @@ namespace OdsAccounting
 
         private void lblYear_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("فرم انتخاب و افزودن سال مالی به زودی باز خواهد شد.", "انتخاب سال مالی");
+            string selectedCompany = Properties.Settings.Default.SelectedCompany?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(selectedCompany) || selectedCompany == "انتخاب شرکت ...")
+            {
+                MessageBox.Show("لطفاً ابتدا یک شرکت را انتخاب کنید.", "انتخاب سال مالی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FrmSelectFinancialPeriod frmFinancialPeriod = new FrmSelectFinancialPeriod(selectedCompany);
+            OpenFormAsTab(frmFinancialPeriod, "انتخاب سال مالی");
         }
 
         private void lblUser_Click(object sender, EventArgs e)
@@ -116,11 +124,57 @@ namespace OdsAccounting
 
         public void SetSelectedCompany(string companyName)
         {
+            if (string.IsNullOrWhiteSpace(companyName))
+            {
+                return;
+            }
+
+            companyName = companyName.Trim();
+            string previousCompany = Properties.Settings.Default.SelectedCompany?.Trim() ?? string.Empty;
+            bool companyChanged = !string.Equals(previousCompany, companyName, StringComparison.Ordinal);
+
             lblCompany.Text = companyName;
             Properties.Settings.Default.SelectedCompany = companyName;
+
+            // سال مالی انتخاب‌شده متعلق به شرکت قبلی است و هنگام تغییر شرکت معتبر نیست.
+            if (companyChanged)
+            {
+                Properties.Settings.Default.SelectedYear = string.Empty;
+                lblYear.Text = "انتخاب سال مالی ...";
+                CloseFinancialPeriodTab();
+            }
+
+            Properties.Settings.Default.Save();
+            MessageBox.Show($"شرکت «{companyName}» با موفقیت انتخاب شد.", "تایید", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void SetSelectedYear(string financialPeriodName)
+        {
+            if (string.IsNullOrWhiteSpace(financialPeriodName))
+            {
+                return;
+            }
+
+            lblYear.Text = financialPeriodName;
+            Properties.Settings.Default.SelectedYear = financialPeriodName;
             Properties.Settings.Default.Save();
 
-            MessageBox.Show($"شرکت «{companyName}» با موفقیت انتخاب شد.", "تایید", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"سال مالی «{financialPeriodName}» با موفقیت انتخاب شد.", "تایید", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void CloseFinancialPeriodTab()
+        {
+            string financialPeriodFormType = typeof(FrmSelectFinancialPeriod).ToString();
+
+            for (int i = tabControlMain.TabPages.Count - 1; i >= 0; i--)
+            {
+                TabPage tabPage = tabControlMain.TabPages[i];
+                if (tabPage.Tag?.ToString() == financialPeriodFormType)
+                {
+                    tabControlMain.TabPages.RemoveAt(i);
+                    tabPage.Dispose();
+                }
+            }
         }
         public void OpenFormAsTab(Form formToOpen, string tabTitle)
         {
