@@ -99,15 +99,15 @@ namespace OdsAccounting
 
         private void btnStartDateCalendar_Click(object? sender, EventArgs e)
         {
-            ShowCalendar(txtStartDate, btnStartDateCalendar);
+            ShowCalendar(txtStartDate);
         }
 
         private void btnEndDateCalendar_Click(object? sender, EventArgs e)
         {
-            ShowCalendar(txtEndDate, btnEndDateCalendar);
+            ShowCalendar(txtEndDate);
         }
 
-        private void ShowCalendar(TextBox dateTextBox, Control anchor)
+        private void ShowCalendar(TextBox dateTextBox)
         {
             DateTime initialDate = DateTime.Today;
             if (TryParsePersianDate(dateTextBox.Text, out DateTime parsedDate))
@@ -115,54 +115,10 @@ namespace OdsAccounting
                 initialDate = parsedDate;
             }
 
-            using MonthCalendar calendar = new MonthCalendar
+            using FrmPersianCalendar calendar = new FrmPersianCalendar(initialDate);
+            if (calendar.ShowDialog(this) == DialogResult.OK && calendar.SelectedDate.HasValue)
             {
-                MaxSelectionCount = 1,
-                Font = Font
-            };
-
-            if (initialDate < calendar.MinDate) initialDate = calendar.MinDate;
-            if (initialDate > calendar.MaxDate) initialDate = calendar.MaxDate;
-            calendar.SetDate(initialDate);
-
-            DateTime selectedDate = initialDate;
-            using Form popup = new Form
-            {
-                AutoScaleMode = AutoScaleMode.None,
-                FormBorderStyle = FormBorderStyle.FixedToolWindow,
-                ShowInTaskbar = false,
-                StartPosition = FormStartPosition.Manual,
-                Text = "انتخاب تاریخ",
-                RightToLeft = RightToLeft.Yes,
-                RightToLeftLayout = true,
-                Font = Font
-            };
-
-            calendar.DateSelected += (_, args) =>
-            {
-                selectedDate = args.Start.Date;
-                popup.DialogResult = DialogResult.OK;
-                popup.Close();
-            };
-
-            popup.Controls.Add(calendar);
-            popup.ClientSize = calendar.Size;
-
-            Point location = anchor.PointToScreen(new Point(0, anchor.Height));
-            Rectangle workingArea = Screen.FromControl(this).WorkingArea;
-            if (location.X + popup.Width > workingArea.Right)
-            {
-                location.X = workingArea.Right - popup.Width;
-            }
-            if (location.Y + popup.Height > workingArea.Bottom)
-            {
-                location.Y = anchor.PointToScreen(Point.Empty).Y - popup.Height;
-            }
-            popup.Location = location;
-
-            if (popup.ShowDialog(this) == DialogResult.OK)
-            {
-                dateTextBox.Text = FormatPersianDate(selectedDate);
+                dateTextBox.Text = FormatPersianDate(calendar.SelectedDate.Value);
             }
         }
 
@@ -307,6 +263,16 @@ namespace OdsAccounting
         private void ApplyFontToAllControls(Control parent)
         {
             parent.Font = Font;
+            if (parent is TextBox textBox)
+            {
+                textBox.RightToLeft = RightToLeft.Yes;
+                textBox.TextAlign = HorizontalAlignment.Right;
+            }
+            else if (parent is ComboBox comboBox)
+            {
+                comboBox.RightToLeft = RightToLeft.Yes;
+            }
+
             foreach (Control child in parent.Controls)
             {
                 ApplyFontToAllControls(child);

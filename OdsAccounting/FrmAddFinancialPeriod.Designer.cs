@@ -149,7 +149,7 @@ namespace OdsAccounting
             txtStartDate.Name = "txtStartDate";
             txtStartDate.PlaceholderText = "yyyy/MM/dd";
             txtStartDate.TabIndex = 0;
-            txtStartDate.TextAlign = HorizontalAlignment.Center;
+            txtStartDate.TextAlign = HorizontalAlignment.Right;
             //
             // btnStartDateCalendar
             //
@@ -184,7 +184,7 @@ namespace OdsAccounting
             txtEndDate.Name = "txtEndDate";
             txtEndDate.PlaceholderText = "yyyy/MM/dd";
             txtEndDate.TabIndex = 0;
-            txtEndDate.TextAlign = HorizontalAlignment.Center;
+            txtEndDate.TextAlign = HorizontalAlignment.Right;
             //
             // btnEndDateCalendar
             //
@@ -211,7 +211,8 @@ namespace OdsAccounting
             chkPeriodOpen.FlatStyle = FlatStyle.Flat;
             chkPeriodOpen.Name = "chkPeriodOpen";
             chkPeriodOpen.Text = "دوره مالی باز است";
-            chkPeriodOpen.TextAlign = ContentAlignment.MiddleCenter;
+            chkPeriodOpen.CheckAlign = ContentAlignment.MiddleRight;
+            chkPeriodOpen.TextAlign = ContentAlignment.MiddleRight;
             chkPeriodOpen.UseVisualStyleBackColor = false;
             chkPeriodOpen.Checked = true;
             chkPeriodOpen.TabIndex = 4;
@@ -267,6 +268,7 @@ namespace OdsAccounting
             chkIsActive.Dock = DockStyle.Right;
             chkIsActive.Name = "chkIsActive";
             chkIsActive.Text = "فعال";
+            chkIsActive.TextAlign = ContentAlignment.MiddleRight;
             chkIsActive.UseVisualStyleBackColor = true;
             chkIsActive.TabIndex = 7;
             //

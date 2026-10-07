@@ -92,7 +92,7 @@ namespace OdsAccounting
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ReadOnly = true;
 
-            SetColumnHeader("RowNumber", "ردیف", 0, 12F, DataGridViewContentAlignment.MiddleCenter);
+            SetColumnHeader("RowNumber", "ردیف", 0, 12F, DataGridViewContentAlignment.MiddleRight);
             SetColumnHeader("FinancialPeriodName", "نام دوره مالی", 1, 38F, DataGridViewContentAlignment.MiddleRight);
             SetColumnHeader("CompanyName", "نام شرکت", 2, 25F, DataGridViewContentAlignment.MiddleRight);
             SetColumnHeader("Description", "توضیحات", 3, 25F, DataGridViewContentAlignment.MiddleRight);
@@ -119,7 +119,7 @@ namespace OdsAccounting
             column.DefaultCellStyle.Alignment = alignment;
             column.DefaultCellStyle.Font = Font;
             column.HeaderCell.Style.Font = Font;
-            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void ApplyFontToAllControls(Control parent)
@@ -133,7 +133,9 @@ namespace OdsAccounting
                 grid.AlternatingRowsDefaultCellStyle.Font = Font;
                 grid.ColumnHeadersDefaultCellStyle.Font = Font;
                 grid.RowHeadersDefaultCellStyle.Font = Font;
-                grid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                grid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                grid.AlternatingRowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                grid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
 
             if (parent is ToolStrip toolStrip)
