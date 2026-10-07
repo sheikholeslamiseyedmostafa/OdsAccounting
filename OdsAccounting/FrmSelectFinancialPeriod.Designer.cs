@@ -1,4 +1,8 @@
-﻿namespace OdsAccounting
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace OdsAccounting
 {
     partial class FrmSelectFinancialPeriod
     {
@@ -42,7 +46,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Font = new Font("B Nazanin", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            toolStrip1.Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             toolStrip1.GripMargin = new Padding(6);
             toolStrip1.ImageScalingSize = new Size(32, 32);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddPeriod, btnDeletePeriod, btnEditPeriod, btnSelect, btnCancel });
@@ -105,6 +109,7 @@
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 82;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1039, 529);

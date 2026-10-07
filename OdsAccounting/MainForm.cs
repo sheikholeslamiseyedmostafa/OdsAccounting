@@ -100,7 +100,7 @@ namespace OdsAccounting
                 return;
             }
 
-            FrmSelectFinancialPeriod frmFinancialPeriod = new FrmSelectFinancialPeriod(selectedCompany);
+            FrmSelectFinancialPeriod frmFinancialPeriod = new FrmSelectFinancialPeriod(selectedCompany, this);
             OpenFormAsTab(frmFinancialPeriod, "انتخاب سال مالی");
         }
 
