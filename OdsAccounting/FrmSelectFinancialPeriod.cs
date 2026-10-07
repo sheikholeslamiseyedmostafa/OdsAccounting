@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -24,18 +25,6 @@ namespace OdsAccounting
             selectedCompanyName = companyName?.Trim() ?? string.Empty;
             this.mainForm = mainForm;
 
-            dataGridView1.MultiSelect = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 40;
-            dataGridView1.RightToLeft = RightToLeft.Yes;
-
-            ApplyFontToAllControls(this);
-
             btnAddPeriod.Click += btnAddPeriod_Click;
             btnSelect.Click += btnSelect_Click;
             btnCancel.Click += btnCancel_Click;
@@ -44,6 +33,11 @@ namespace OdsAccounting
 
         private void FrmSelectFinancialPeriod_Load(object? sender, EventArgs e)
         {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+            {
+                return;
+            }
+
             LoadFinancialPeriods();
         }
 
@@ -70,7 +64,6 @@ namespace OdsAccounting
             {
                 DataTable periods = periodRepository.LoadForCompany(selectedCompanyName);
                 dataGridView1.DataSource = periods;
-                ConfigureColumns();
             }
             catch (Exception ex)
             {
@@ -80,76 +73,6 @@ namespace OdsAccounting
                     "خطا",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-            }
-        }
-
-        private void ConfigureColumns()
-        {
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersVisible = true;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = true;
-
-            SetColumnHeader("RowNumber", "ردیف", 0, 12F, DataGridViewContentAlignment.MiddleRight);
-            SetColumnHeader("FinancialPeriodName", "نام دوره مالی", 1, 38F, DataGridViewContentAlignment.MiddleRight);
-            SetColumnHeader("CompanyName", "نام شرکت", 2, 25F, DataGridViewContentAlignment.MiddleRight);
-            SetColumnHeader("Description", "توضیحات", 3, 25F, DataGridViewContentAlignment.MiddleRight);
-        }
-
-        private void SetColumnHeader(
-            string columnName,
-            string headerText,
-            int displayIndex,
-            float fillWeight,
-            DataGridViewContentAlignment alignment)
-        {
-            if (!dataGridView1.Columns.Contains(columnName))
-            {
-                return;
-            }
-
-            DataGridViewColumn column = dataGridView1.Columns[columnName];
-            column.HeaderText = headerText;
-            column.Visible = true;
-            column.DisplayIndex = displayIndex;
-            column.FillWeight = fillWeight;
-            column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            column.DefaultCellStyle.Alignment = alignment;
-            column.DefaultCellStyle.Font = Font;
-            column.HeaderCell.Style.Font = Font;
-            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-        }
-
-        private void ApplyFontToAllControls(Control parent)
-        {
-            parent.Font = Font;
-
-            if (parent is DataGridView grid)
-            {
-                grid.Font = Font;
-                grid.DefaultCellStyle.Font = Font;
-                grid.AlternatingRowsDefaultCellStyle.Font = Font;
-                grid.ColumnHeadersDefaultCellStyle.Font = Font;
-                grid.RowHeadersDefaultCellStyle.Font = Font;
-                grid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                grid.AlternatingRowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                grid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            }
-
-            if (parent is ToolStrip toolStrip)
-            {
-                toolStrip.Font = Font;
-                foreach (ToolStripItem item in toolStrip.Items)
-                {
-                    item.Font = Font;
-                }
-            }
-
-            foreach (Control child in parent.Controls)
-            {
-                ApplyFontToAllControls(child);
             }
         }
 

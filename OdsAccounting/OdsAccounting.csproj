@@ -26,6 +26,12 @@
     <Compile Update="FrmSelectFinancialPeriod.Designer.cs">
       <DependentUpon>FrmSelectFinancialPeriod.cs</DependentUpon>
     </Compile>
+    <Compile Update="FrmPersianCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmPersianCalendar.Designer.cs">
+      <DependentUpon>FrmPersianCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

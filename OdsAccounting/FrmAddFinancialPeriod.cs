@@ -35,7 +35,6 @@ namespace OdsAccounting
             btnSave.Click += btnSave_Click;
             btnCancel.Click += btnCancel_Click;
 
-            ApplyFontToAllControls(this);
             UpdateOpenStateAppearance();
         }
 
@@ -260,23 +259,5 @@ namespace OdsAccounting
             Close();
         }
 
-        private void ApplyFontToAllControls(Control parent)
-        {
-            parent.Font = Font;
-            if (parent is TextBox textBox)
-            {
-                textBox.RightToLeft = RightToLeft.Yes;
-                textBox.TextAlign = HorizontalAlignment.Right;
-            }
-            else if (parent is ComboBox comboBox)
-            {
-                comboBox.RightToLeft = RightToLeft.Yes;
-            }
-
-            foreach (Control child in parent.Controls)
-            {
-                ApplyFontToAllControls(child);
-            }
-        }
     }
 }
