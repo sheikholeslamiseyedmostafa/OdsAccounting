@@ -1,41 +1,46 @@
-﻿using System;
+using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace OdsAccounting
 {
     public partial class FrmSelectFinancialPeriod : Form
     {
-        private readonly string connectionString = "Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
-        private string selectedCompanyName;
+        private readonly FinancialPeriodRepository periodRepository = new FinancialPeriodRepository();
+        private readonly string selectedCompanyName;
+        private readonly MainForm? mainForm;
 
-        public FrmSelectFinancialPeriod() : this(Properties.Settings.Default.SelectedCompany)
+        public FrmSelectFinancialPeriod() : this(Properties.Settings.Default.SelectedCompany, null)
         {
         }
 
-        public FrmSelectFinancialPeriod(string companyName)
+        public FrmSelectFinancialPeriod(string companyName) : this(companyName, null)
+        {
+        }
+
+        public FrmSelectFinancialPeriod(string companyName, MainForm? mainForm)
         {
             InitializeComponent();
             selectedCompanyName = companyName?.Trim() ?? string.Empty;
+            this.mainForm = mainForm;
 
-            dataGridView1.MultiSelect = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowTemplate.Height = 35;
-
+            btnAddPeriod.Click += btnAddPeriod_Click;
             btnSelect.Click += btnSelect_Click;
             btnCancel.Click += btnCancel_Click;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
         }
 
-        private void FrmSelectFinancialPeriod_Load(object sender, EventArgs e)
+        private void FrmSelectFinancialPeriod_Load(object? sender, EventArgs e)
         {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+            {
+                return;
+            }
+
             LoadFinancialPeriods();
         }
 
-        // فقط دفاتر مالی متعلق به شرکت جاری بارگذاری می‌شوند.
         public void LoadFinancialPeriods()
         {
             if (string.IsNullOrWhiteSpace(selectedCompanyName))
@@ -46,89 +51,47 @@ namespace OdsAccounting
                 return;
             }
 
+            string currentCompanyName = Properties.Settings.Default.SelectedCompany?.Trim() ?? string.Empty;
+            if (!string.Equals(currentCompanyName, selectedCompanyName, StringComparison.Ordinal))
+            {
+                dataGridView1.DataSource = null;
+                MessageBox.Show("شرکت جاری تغییر کرده است. فرم انتخاب سال مالی را دوباره باز کنید.", "انتخاب سال مالی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CloseCurrentTab();
+                return;
+            }
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(@"
-                    SELECT financialPeriod.*
-                    FROM [ods].[SC_FinancialPeriods] AS financialPeriod
-                    INNER JOIN [ods].[SC_Companies] AS company
-                        ON company.CompanyID = financialPeriod.CompanyID
-                    WHERE company.CompanyName = @CompanyName", connection))
-                {
-                    command.Parameters.AddWithValue("@CompanyName", selectedCompanyName);
-
-                    DataTable periods = new DataTable();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        adapter.Fill(periods);
-                    }
-
-                    dataGridView1.DataSource = periods;
-                    ConfigureColumns();
-                }
+                DataTable periods = periodRepository.LoadForCompany(selectedCompanyName);
+                dataGridView1.DataSource = periods;
             }
             catch (Exception ex)
             {
+                dataGridView1.DataSource = null;
                 MessageBox.Show(
-                    "خطا در بارگذاری دفاتر مالی شرکت انتخاب‌شده:\n" + ex.Message,
+                    "خطا در شناسایی یا بارگذاری دفاتر مالی شرکت انتخاب‌شده:\n" + ex.Message,
                     "خطا",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
 
-        private void ConfigureColumns()
+        private void btnAddPeriod_Click(object? sender, EventArgs e)
         {
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            if (string.IsNullOrWhiteSpace(selectedCompanyName))
             {
-                column.HeaderText = GetPersianHeader(column.Name);
-                column.Visible = !IsTechnicalColumn(column.Name);
+                MessageBox.Show("ابتدا یک شرکت را انتخاب کنید.", "افزودن دوره مالی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using FrmAddFinancialPeriod form = new FrmAddFinancialPeriod(selectedCompanyName);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadFinancialPeriods();
             }
         }
 
-        private string GetPersianHeader(string columnName)
-        {
-            switch (columnName.ToLowerInvariant())
-            {
-                case "financialperiodname":
-                case "financialyearname":
-                case "periodname":
-                case "accountingperiodname":
-                case "bookname":
-                case "yearname":
-                case "financialyear":
-                case "fiscalyear":
-                case "year":
-                    return "سال مالی";
-                case "periodtitle":
-                case "title":
-                case "name":
-                    return "عنوان";
-                case "startdate":
-                case "periodstartdate":
-                    return "تاریخ شروع";
-                case "enddate":
-                case "periodenddate":
-                    return "تاریخ پایان";
-                case "isactive":
-                    return "فعال";
-                case "description":
-                    return "توضیحات";
-                case "companyid":
-                    return "شناسه شرکت";
-                default:
-                    return columnName;
-            }
-        }
-
-        private bool IsTechnicalColumn(string columnName)
-        {
-            return columnName.Equals("CompanyID", StringComparison.OrdinalIgnoreCase)
-                || columnName.EndsWith("ID", StringComparison.OrdinalIgnoreCase);
-        }
-
-        private void btnSelect_Click(object sender, EventArgs e)
+        private void btnSelect_Click(object? sender, EventArgs e)
         {
             DataGridViewRow? selectedRow = GetSelectedRow();
             if (selectedRow == null)
@@ -137,7 +100,6 @@ namespace OdsAccounting
                 return;
             }
 
-            // اگر شرکت پس از باز شدن این فرم تغییر کرده باشد، انتخاب قدیمی پذیرفته نمی‌شود.
             string currentCompanyName = Properties.Settings.Default.SelectedCompany?.Trim() ?? string.Empty;
             if (!string.Equals(currentCompanyName, selectedCompanyName, StringComparison.Ordinal))
             {
@@ -149,13 +111,26 @@ namespace OdsAccounting
             string financialPeriodName = GetFinancialPeriodName(selectedRow);
             if (string.IsNullOrWhiteSpace(financialPeriodName))
             {
-                MessageBox.Show("عنوان سال مالی انتخاب‌شده قابل تشخیص نیست.", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("عنوان دوره مالی انتخاب‌شده خالی است.", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (Application.OpenForms["MainForm"] is MainForm mainForm)
+            MainForm? targetMainForm = mainForm;
+            if (targetMainForm == null || targetMainForm.IsDisposed)
             {
-                mainForm.SetSelectedYear(financialPeriodName);
+                foreach (Form openForm in Application.OpenForms)
+                {
+                    if (openForm is MainForm openMainForm)
+                    {
+                        targetMainForm = openMainForm;
+                        break;
+                    }
+                }
+            }
+
+            if (targetMainForm != null && !targetMainForm.IsDisposed)
+            {
+                targetMainForm.SetSelectedYear(financialPeriodName);
             }
 
             CloseCurrentTab();
@@ -182,60 +157,16 @@ namespace OdsAccounting
 
         private string GetFinancialPeriodName(DataGridViewRow row)
         {
-            string[] preferredColumns =
-            {
-                "FinancialPeriodName",
-                "FinancialYearName",
-                "PeriodName",
-                "AccountingPeriodName",
-                "BookName",
-                "YearName",
-                "FinancialYear",
-                "FiscalYear",
-                "PeriodTitle",
-                "Year",
-                "Title",
-                "Name"
-            };
-
-            foreach (string columnName in preferredColumns)
-            {
-                string value = GetCellValue(row, columnName);
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    return value;
-                }
-            }
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                if (!column.Visible || IsTechnicalColumn(column.Name))
-                {
-                    continue;
-                }
-
-                string value = GetCellValue(row, column.Name);
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    return value;
-                }
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCellValue(DataGridViewRow row, string columnName)
-        {
-            if (!dataGridView1.Columns.Contains(columnName))
+            if (!dataGridView1.Columns.Contains("FinancialPeriodName"))
             {
                 return string.Empty;
             }
 
-            object? value = row.Cells[columnName].Value;
-            return value == null || value == DBNull.Value ? string.Empty : Convert.ToString(value) ?? string.Empty;
+            object? value = row.Cells["FinancialPeriodName"].Value;
+            return value == null || value == DBNull.Value ? string.Empty : Convert.ToString(value)?.Trim() ?? string.Empty;
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -243,7 +174,7 @@ namespace OdsAccounting
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object? sender, EventArgs e)
         {
             CloseCurrentTab();
         }
