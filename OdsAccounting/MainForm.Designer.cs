@@ -73,6 +73,7 @@
             lblYear.Name = "lblYear";
             lblYear.Size = new Size(127, 43);
             lblYear.Text = "سال مالی ...";
+            lblYear.Click += lblYear_Click;
             // 
             // lblUser
             // 
