@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FrmAddFinancialPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmAddFinancialPeriod.Designer.cs">
+      <DependentUpon>FrmAddFinancialPeriod.cs</DependentUpon>
+    </Compile>
     <Compile Update="FrmSelectFinancialPeriod.cs">
       <SubType>Form</SubType>
     </Compile>

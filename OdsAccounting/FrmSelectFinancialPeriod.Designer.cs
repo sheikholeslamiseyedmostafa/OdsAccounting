@@ -63,7 +63,7 @@ namespace OdsAccounting
             btnAddPeriod.ImageTransparentColor = Color.Magenta;
             btnAddPeriod.Name = "btnAddPeriod";
             btnAddPeriod.Size = new Size(172, 47);
-            btnAddPeriod.Text = "افزودن دوره ";
+            btnAddPeriod.Text = "افزودن سال مالی";
             // 
             // btnDeletePeriod
             // 
