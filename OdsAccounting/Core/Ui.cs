@@ -18,8 +18,32 @@ namespace OdsAccounting
         /// <summary>فونت اصلی: B Nazanin، بولد، سایز 11 (در بازه 10 تا 12)</summary>
         public static Font AppFont => new Font(FontFamilyName, 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
         /// <summary>فونت عنوان‌ها: سایز 12</summary>
-        /// <summary>فونت منوی کناری: سایز 13 (با درخواست کاربر، از قاعده 10 تا 12 عدول شده)</summary>
-        public static Font MenuFont => new Font(FontFamilyName, 13F, FontStyle.Bold, GraphicsUnit.Point, 178);
+        private static System.Drawing.Text.PrivateFontCollection _pfc;
+        private static string _menuFamily;
+        private static string _iconFamily;
+
+        /// <summary>بارگذاری فونت‌های همراه برنامه (Vazirmatn برای منو، Material Design Icons برای آیکون) از پوشه Fonts.</summary>
+        public static void LoadAppFonts()
+        {
+            if (_pfc != null) return;
+            _pfc = new System.Drawing.Text.PrivateFontCollection();
+            string dir = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Fonts");
+            string vazir = System.IO.Path.Combine(dir, "Vazirmatn-Bold.ttf");
+            string mdi = System.IO.Path.Combine(dir, "materialdesignicons-webfont.ttf");
+            try { if (System.IO.File.Exists(vazir)) _pfc.AddFontFile(vazir); } catch { }
+            try { if (System.IO.File.Exists(mdi)) _pfc.AddFontFile(mdi); } catch { }
+            _menuFamily = _pfc.Families.Length > 0 ? _pfc.Families[0].Name : FontFamilyName;
+            _iconFamily = _pfc.Families.Length > 1 ? _pfc.Families[1].Name : "Segoe UI Symbol";
+        }
+
+        /// <summary>فونت منوی کناری: Vazirmatn Bold، سایز 13 (درخواست کاربر).</summary>
+        public static Font MenuFont
+        {
+            get { LoadAppFonts(); return new Font(_menuFamily, 13F, FontStyle.Bold, GraphicsUnit.Point, 178); }
+        }
+
+        /// <summary>فونت آیکون‌های منو (Material Design Icons).</summary>
+        public static string IconFontFamily { get { LoadAppFonts(); return _iconFamily; } }
         public static Font TitleFont => new Font(FontFamilyName, 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
         /// <summary>فونت جدول‌ها: سایز 10</summary>
         public static Font GridFont => new Font(FontFamilyName, 10F, FontStyle.Bold, GraphicsUnit.Point, 178);
@@ -113,7 +137,7 @@ namespace OdsAccounting
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
                 g.Clear(Color.Transparent);
-                using (var f = new Font("Segoe UI Emoji", size * 0.6F, GraphicsUnit.Pixel))
+                using (var f = new Font(IconFontFamily, size * 0.6F, GraphicsUnit.Pixel))
                 using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
                     g.DrawString(glyph, f, Brushes.White, new RectangleF(0, 0, size, size), sf);
             }

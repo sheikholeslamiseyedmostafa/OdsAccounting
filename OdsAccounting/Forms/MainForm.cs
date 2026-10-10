@@ -10,22 +10,23 @@ namespace OdsAccounting
     /// <summary>فرم اصلی: منوی کناری با آیکن، تب‌های ماژول‌ها، شرکت و سال مالی جاری.</summary>
     public partial class MainForm : Form
     {
+        // کدپوینت‌های Material Design Icons (از فایل css نسخه 7.4.47)
         private static readonly Dictionary<string, string> MenuIcons = new Dictionary<string, string>
         {
-            ["Dashboard"] = "📊",
-            ["Basic"] = "🏢",
-            ["Chart"] = "📚",
-            ["Dimensions"] = "🧭",
-            ["Journal"] = "📒",
-            ["Invoice"] = "🧾",
-            ["Reports"] = "📈",
-            ["Payroll"] = "👥",
-            ["Workflow"] = "🔄",
-            ["Users"] = "🔐",
-            ["Backup"] = "💾",
-            ["Settings"] = "⚙",
-            ["AI"] = "🤖",
-            ["Exit"] = "⏻"
+            ["Dashboard"] = "\U000F056E",
+            ["Basic"] = "\U000F01D7",
+            ["Chart"] = "\U000F04AA",
+            ["Dimensions"] = "\U000F07AF",
+            ["Journal"] = "\U000F14E7",
+            ["Invoice"] = "\U000F0824",
+            ["Reports"] = "\U000F0128",
+            ["Payroll"] = "\U000F1097",
+            ["Workflow"] = "\U000F0791",
+            ["Users"] = "\U000F0849",
+            ["Backup"] = "\U000F006F",
+            ["Settings"] = "\U000F0493",
+            ["AI"] = "\U000F06A9",
+            ["Exit"] = "\U000F0425"
         };
 
         public MainForm()
