@@ -78,7 +78,7 @@ namespace OdsAccounting
             this.btnMenuDashboard.Text = "میز کار (داشبورد)";
             this.btnMenuDashboard.Width = 300;
             this.btnMenuDashboard.Height = 54;
-            this.btnMenuDashboard.Margin = new Padding(10,4,10,4);
+            this.btnMenuDashboard.Margin = new Padding(10,8,10,8);
             this.btnMenuDashboard.FlatStyle = FlatStyle.Flat;
             this.btnMenuDashboard.ForeColor = Color.White;
             this.btnMenuDashboard.BackColor = Color.FromArgb(11, 37, 69);
@@ -90,7 +90,7 @@ namespace OdsAccounting
             this.btnMenuBasic.Text = "اطلاعات پایه (شرکت و سال مالی)";
             this.btnMenuBasic.Width = 300;
             this.btnMenuBasic.Height = 54;
-            this.btnMenuBasic.Margin = new Padding(10,4,10,4);
+            this.btnMenuBasic.Margin = new Padding(10,8,10,8);
             this.btnMenuBasic.FlatStyle = FlatStyle.Flat;
             this.btnMenuBasic.ForeColor = Color.White;
             this.btnMenuBasic.BackColor = Color.FromArgb(11, 37, 69);
@@ -102,7 +102,7 @@ namespace OdsAccounting
             this.btnMenuChart.Text = "سرفصل حساب‌ها و شناور";
             this.btnMenuChart.Width = 300;
             this.btnMenuChart.Height = 54;
-            this.btnMenuChart.Margin = new Padding(10,4,10,4);
+            this.btnMenuChart.Margin = new Padding(10,8,10,8);
             this.btnMenuChart.FlatStyle = FlatStyle.Flat;
             this.btnMenuChart.ForeColor = Color.White;
             this.btnMenuChart.BackColor = Color.FromArgb(11, 37, 69);
@@ -114,7 +114,7 @@ namespace OdsAccounting
             this.btnMenuDimensions.Text = "مرکز هزینه و پروژه";
             this.btnMenuDimensions.Width = 300;
             this.btnMenuDimensions.Height = 54;
-            this.btnMenuDimensions.Margin = new Padding(10,4,10,4);
+            this.btnMenuDimensions.Margin = new Padding(10,8,10,8);
             this.btnMenuDimensions.FlatStyle = FlatStyle.Flat;
             this.btnMenuDimensions.ForeColor = Color.White;
             this.btnMenuDimensions.BackColor = Color.FromArgb(11, 37, 69);
@@ -126,7 +126,7 @@ namespace OdsAccounting
             this.btnMenuJournal.Text = "اسناد حسابداری";
             this.btnMenuJournal.Width = 300;
             this.btnMenuJournal.Height = 54;
-            this.btnMenuJournal.Margin = new Padding(10,4,10,4);
+            this.btnMenuJournal.Margin = new Padding(10,8,10,8);
             this.btnMenuJournal.FlatStyle = FlatStyle.Flat;
             this.btnMenuJournal.ForeColor = Color.White;
             this.btnMenuJournal.BackColor = Color.FromArgb(11, 37, 69);
@@ -138,7 +138,7 @@ namespace OdsAccounting
             this.btnMenuInvoice.Text = "صدور فاکتور و مودیان";
             this.btnMenuInvoice.Width = 300;
             this.btnMenuInvoice.Height = 54;
-            this.btnMenuInvoice.Margin = new Padding(10,4,10,4);
+            this.btnMenuInvoice.Margin = new Padding(10,8,10,8);
             this.btnMenuInvoice.FlatStyle = FlatStyle.Flat;
             this.btnMenuInvoice.ForeColor = Color.White;
             this.btnMenuInvoice.BackColor = Color.FromArgb(11, 37, 69);
@@ -150,7 +150,7 @@ namespace OdsAccounting
             this.btnMenuReports.Text = "گزارش‌ها و ترازها";
             this.btnMenuReports.Width = 300;
             this.btnMenuReports.Height = 54;
-            this.btnMenuReports.Margin = new Padding(10,4,10,4);
+            this.btnMenuReports.Margin = new Padding(10,8,10,8);
             this.btnMenuReports.FlatStyle = FlatStyle.Flat;
             this.btnMenuReports.ForeColor = Color.White;
             this.btnMenuReports.BackColor = Color.FromArgb(11, 37, 69);
@@ -162,7 +162,7 @@ namespace OdsAccounting
             this.btnMenuPayroll.Text = "حقوق و دستمزد";
             this.btnMenuPayroll.Width = 300;
             this.btnMenuPayroll.Height = 54;
-            this.btnMenuPayroll.Margin = new Padding(10,4,10,4);
+            this.btnMenuPayroll.Margin = new Padding(10,8,10,8);
             this.btnMenuPayroll.FlatStyle = FlatStyle.Flat;
             this.btnMenuPayroll.ForeColor = Color.White;
             this.btnMenuPayroll.BackColor = Color.FromArgb(11, 37, 69);
@@ -174,7 +174,7 @@ namespace OdsAccounting
             this.btnMenuWorkflow.Text = "گردش کار و تایید";
             this.btnMenuWorkflow.Width = 300;
             this.btnMenuWorkflow.Height = 54;
-            this.btnMenuWorkflow.Margin = new Padding(10,4,10,4);
+            this.btnMenuWorkflow.Margin = new Padding(10,8,10,8);
             this.btnMenuWorkflow.FlatStyle = FlatStyle.Flat;
             this.btnMenuWorkflow.ForeColor = Color.White;
             this.btnMenuWorkflow.BackColor = Color.FromArgb(11, 37, 69);
@@ -186,7 +186,7 @@ namespace OdsAccounting
             this.btnMenuUsers.Text = "کاربران و امنیت";
             this.btnMenuUsers.Width = 300;
             this.btnMenuUsers.Height = 54;
-            this.btnMenuUsers.Margin = new Padding(10,4,10,4);
+            this.btnMenuUsers.Margin = new Padding(10,8,10,8);
             this.btnMenuUsers.FlatStyle = FlatStyle.Flat;
             this.btnMenuUsers.ForeColor = Color.White;
             this.btnMenuUsers.BackColor = Color.FromArgb(11, 37, 69);
@@ -198,7 +198,7 @@ namespace OdsAccounting
             this.btnMenuBackup.Text = "پشتیبان‌گیری و بازیابی";
             this.btnMenuBackup.Width = 300;
             this.btnMenuBackup.Height = 54;
-            this.btnMenuBackup.Margin = new Padding(10,4,10,4);
+            this.btnMenuBackup.Margin = new Padding(10,8,10,8);
             this.btnMenuBackup.FlatStyle = FlatStyle.Flat;
             this.btnMenuBackup.ForeColor = Color.White;
             this.btnMenuBackup.BackColor = Color.FromArgb(11, 37, 69);
@@ -210,7 +210,7 @@ namespace OdsAccounting
             this.btnMenuSettings.Text = "تنظیمات سیستم";
             this.btnMenuSettings.Width = 300;
             this.btnMenuSettings.Height = 54;
-            this.btnMenuSettings.Margin = new Padding(10,4,10,4);
+            this.btnMenuSettings.Margin = new Padding(10,8,10,8);
             this.btnMenuSettings.FlatStyle = FlatStyle.Flat;
             this.btnMenuSettings.ForeColor = Color.White;
             this.btnMenuSettings.BackColor = Color.FromArgb(11, 37, 69);
@@ -222,7 +222,7 @@ namespace OdsAccounting
             this.btnMenuAI.Text = "هوش مصنوعی";
             this.btnMenuAI.Width = 300;
             this.btnMenuAI.Height = 54;
-            this.btnMenuAI.Margin = new Padding(10,4,10,4);
+            this.btnMenuAI.Margin = new Padding(10,8,10,8);
             this.btnMenuAI.FlatStyle = FlatStyle.Flat;
             this.btnMenuAI.ForeColor = Color.White;
             this.btnMenuAI.BackColor = Color.FromArgb(11, 37, 69);
@@ -234,7 +234,7 @@ namespace OdsAccounting
             this.btnMenuExit.Text = "خروج";
             this.btnMenuExit.Width = 300;
             this.btnMenuExit.Height = 54;
-            this.btnMenuExit.Margin = new Padding(10,4,10,4);
+            this.btnMenuExit.Margin = new Padding(10,8,10,8);
             this.btnMenuExit.FlatStyle = FlatStyle.Flat;
             this.btnMenuExit.ForeColor = Color.White;
             this.btnMenuExit.BackColor = Color.FromArgb(11, 37, 69);
