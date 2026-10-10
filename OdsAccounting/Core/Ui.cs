@@ -48,9 +48,16 @@ namespace OdsAccounting
         /// <summary>فونت جدول‌ها: سایز 10</summary>
         public static Font GridFont => new Font(FontFamilyName, 10F, FontStyle.Bold, GraphicsUnit.Point, 178);
 
-        public static readonly Color Primary = Color.FromArgb(0, 84, 147);
-        public static readonly Color Accent = Color.FromArgb(0, 150, 136);
-        public static readonly Color Danger = Color.FromArgb(192, 57, 43);
+        // پالت طراحی (هم‌راستا با تصویر داشبورد)
+        public static readonly Color Primary = Color.FromArgb(37, 99, 235);      // #2563EB
+        public static readonly Color Secondary = Color.FromArgb(30, 41, 59);     // #1E293B
+        public static readonly Color Background = Color.FromArgb(248, 250, 252); // #F8FAFC
+        public static readonly Color SidebarTop = Color.FromArgb(15, 23, 42);    // #0F172A
+        public static readonly Color SidebarBottom = Color.FromArgb(30, 58, 138); // #1E3A8A
+        public static readonly Color Success = Color.FromArgb(34, 197, 94);      // #22C55E
+        public static readonly Color Warning = Color.FromArgb(245, 158, 11);     // #F59E0B
+        public static readonly Color Accent = Color.FromArgb(6, 182, 212);       // #06B6D4 (فیروزه‌ای)
+        public static readonly Color Danger = Color.FromArgb(239, 68, 68);       // #EF4444
 
         /// <summary>اعمال فونت یکسان به تمام کنترل‌ها و منوها (شامل فرزندان).</summary>
         public static void ApplyFont(Control root)
@@ -102,7 +109,7 @@ namespace OdsAccounting
             g.ColumnHeadersDefaultCellStyle.BackColor = Primary;
             g.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             g.ColumnHeadersDefaultCellStyle.Font = GridFont;
-            g.DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 222, 251);
+            g.DefaultCellStyle.SelectionBackColor = Color.FromArgb(219, 234, 254);
             g.DefaultCellStyle.SelectionForeColor = Color.Black;
             g.RowTemplate.Height = 30;
         }

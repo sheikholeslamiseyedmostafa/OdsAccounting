@@ -33,6 +33,15 @@ namespace OdsAccounting
         {
             InitializeComponent();
             Ui.ApplyFont(this);
+            // پس‌زمینه‌ی گرادیانی سایدبار (از #0F172A تا #1E3A8A)
+            pnlSidebar.Paint += (sender, args) =>
+            {
+                var rect = pnlSidebar.ClientRectangle;
+                if (rect.Width <= 0 || rect.Height <= 0) return;
+                using (var br = new System.Drawing.Drawing2D.LinearGradientBrush(rect, Ui.SidebarTop, Ui.SidebarBottom, 90F))
+                    args.Graphics.FillRectangle(br, rect);
+            };
+            pnlSidebar.Resize += (sender, args) => pnlSidebar.Invalidate();
             lblCompany.Click += (s, e) => OpenCompanySelection();
             lblYear.Click += (s, e) => OpenFinancialPeriod();
         }
@@ -113,7 +122,7 @@ namespace OdsAccounting
                 pair.Key.Invalidate();
             }
             _activeMenu = btn;
-            btn.BackColor = Ui.Accent;
+            btn.BackColor = Ui.Primary;
             btn.Invalidate();
         }
 
