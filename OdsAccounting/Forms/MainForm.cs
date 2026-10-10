@@ -61,29 +61,56 @@ namespace OdsAccounting
             }
         }
 
-        /// <summary>آیکن مناسب کنار هر منو.</summary>
+        private static readonly Color SidebarBase = Color.FromArgb(11, 37, 69);
+        private static readonly Color SidebarHover = Color.FromArgb(26, 62, 105);
+        private Button _activeMenu;
+
+        /// <summary>آیکن سفید و ظاهر تخت برای هر منو (سبک منوی کناری).</summary>
         private void ApplyMenuIcons()
         {
+            // عنوان بالای منو
+            var header = new Label
+            {
+                Text = "ODS  |  حسابداری",
+                Dock = DockStyle.Top,
+                Height = 56,
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.White,
+                BackColor = SidebarBase,
+                Font = Ui.MenuFont
+            };
+            pnlSidebar.Controls.Add(header);
+
             foreach (Control c in flowMenu.Controls)
             {
-                if (c is Button b)
+                if (!(c is Button b)) continue;
+                b.Font = Ui.MenuFont;
+                b.FlatStyle = FlatStyle.Flat;
+                b.FlatAppearance.BorderSize = 0;
+                b.FlatAppearance.MouseOverBackColor = SidebarHover;
+                b.FlatAppearance.MouseDownBackColor = SidebarHover;
+                b.BackColor = SidebarBase;
+                b.ForeColor = Color.White;
+                b.TextAlign = ContentAlignment.MiddleCenter;
+                if (b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
                 {
-                    b.Font = Ui.MenuFont;
-                    if (b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
-                        Ui.SetButtonIcon(b, glyph);
+                    b.Image = Ui.SidebarIcon(glyph, 26);
+                    b.ImageAlign = ContentAlignment.MiddleRight;
                 }
             }
         }
 
-        private void SetPersianDate()
+        /// <summary>منوی فعال با رنگ تأکید مشخص می‌شود.</summary>
+        private void SetActiveMenu(Button btn)
         {
-            lblDate.Text = "تاریخ: " + Jalali.Format(DateTime.Now);
-            lblDate.BackColor = Color.Green;
-            lblDate.ForeColor = Color.White;
+            if (_activeMenu != null) _activeMenu.BackColor = SidebarBase;
+            _activeMenu = btn;
+            btn.BackColor = Ui.Accent;
         }
 
         private void BtnMenu_Click(object sender, EventArgs e)
         {
+            SetActiveMenu((Button)sender);
             string tag = ((Button)sender).Tag?.ToString();
             switch (tag)
             {

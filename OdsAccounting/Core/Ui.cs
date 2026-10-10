@@ -104,6 +104,22 @@ namespace OdsAccounting
             return bmp;
         }
 
+        /// <summary>آیکن سفید بدون کادر برای منوی کناری (مشابه منوهای مدرن).</summary>
+        public static Bitmap SidebarIcon(string glyph, int size = 24)
+        {
+            var bmp = new Bitmap(size, size);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+                g.Clear(Color.Transparent);
+                using (var f = new Font("Segoe UI Emoji", size * 0.6F, GraphicsUnit.Pixel))
+                using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+                    g.DrawString(glyph, f, Brushes.White, new RectangleF(0, 0, size, size), sf);
+            }
+            return bmp;
+        }
+
         public static void SetButtonIcon(Button btn, string glyph)
         {
             btn.Image = Icon(glyph, 28);
