@@ -70,8 +70,8 @@ namespace OdsAccounting
             }
         }
 
-        private static readonly Color SidebarBase = Color.FromArgb(11, 37, 69);
-        private static readonly Color SidebarHover = Color.FromArgb(26, 62, 105);
+        // رنگ پایه‌ی هر منو همان مقداری است که در Designer تنظیم شده (حتی Transparent)
+        private readonly Dictionary<Button, Color> _menuBaseColors = new Dictionary<Button, Color>();
         private Button _activeMenu;
 
         /// <summary>فقط آیکن (تصویر) منو در زمان اجرا ساخته می‌شود؛ بقیه‌ی ظاهر منو در Designer تعریف شده است.</summary>
@@ -79,7 +79,9 @@ namespace OdsAccounting
         {
             foreach (Control c in flowMenu.Controls)
             {
-                if (c is Button b && b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
+                if (!(c is Button b)) continue;
+                _menuBaseColors[b] = b.BackColor;
+                if (b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
                     b.Image = Ui.SidebarIcon(glyph, 26);
             }
         }
@@ -88,13 +90,10 @@ namespace OdsAccounting
         private void SetActiveMenu(Button btn)
         {
             // همه‌ی منوها به رنگ پایه برمی‌گردند و فقط منوی انتخاب‌شده رنگ تأکید می‌گیرد
-            foreach (Control c in flowMenu.Controls)
+            foreach (var pair in _menuBaseColors)
             {
-                if (c is Button b)
-                {
-                    b.BackColor = SidebarBase;
-                    b.Invalidate();
-                }
+                pair.Key.BackColor = pair.Value;
+                pair.Key.Invalidate();
             }
             _activeMenu = btn;
             btn.BackColor = Ui.Accent;
