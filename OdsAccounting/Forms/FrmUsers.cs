@@ -10,7 +10,6 @@ namespace OdsAccounting
     {
         private static readonly string[] RoleKeys = { "Admin", "Accountant", "Viewer" };
         private static readonly string[] RoleTitles = { "مدیر سیستم", "حسابدار", "مشاهده‌گر" };
-        private int _userId;
         private string _userName = "";
 
         public FrmUsers()
@@ -33,11 +32,10 @@ namespace OdsAccounting
         private void RefreshAll()
         {
             dgvUsers.DataSource = AppDb.Query(@"
-                SELECT UserID, UserLoginName AS [نام کاربری], ISNULL(FullName, N'') AS [نام کامل],
+                SELECT UserLoginName AS [نام کاربری], ISNULL(FullName, N'') AS [نام کامل],
                        CASE [Role] WHEN 'Admin' THEN N'مدیر سیستم' WHEN 'Accountant' THEN N'حسابدار' ELSE N'مشاهده‌گر' END AS [نقش],
                        CASE WHEN IsActive = 1 THEN N'فعال' ELSE N'غیرفعال' END AS [وضعیت]
                 FROM ods.SC_Users ORDER BY UserLoginName");
-            dgvUsers.Columns["UserID"].Visible = false;
 
             dgvAudit.DataSource = AppDb.Query(@"
                 SELECT TOP (300) LogDate AS [زمان], UserName AS [کاربر], [Action] AS [عملیات], ISNULL(Details, N'') AS [جزئیات]
@@ -47,9 +45,9 @@ namespace OdsAccounting
         private void LoadUser(int index)
         {
             DataGridViewRow row = dgvUsers.Rows[index];
-            _userId = Conv.Int(row.Cells["UserID"].Value);
-            DataTable t = AppDb.Query("SELECT UserLoginName, ISNULL(FullName, N'') AS FullName, [Role], IsActive FROM ods.SC_Users WHERE UserID = @id",
-                new SqlParameter("@id", _userId));
+            _userName = Conv.Str(row.Cells["نام کاربری"].Value);
+            DataTable t = AppDb.Query("SELECT UserLoginName, ISNULL(FullName, N'') AS FullName, [Role], IsActive FROM ods.SC_Users WHERE UserLoginName = @u",
+                new SqlParameter("@u", _userName));
             if (t.Rows.Count == 0) return;
             DataRow r = t.Rows[0];
             _userName = Conv.Str(r["UserLoginName"]);
@@ -65,7 +63,6 @@ namespace OdsAccounting
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            _userId = 0;
             _userName = "";
             txtUser.Text = ""; txtUser.ReadOnly = false;
             txtFull.Text = ""; txtPass.Text = "";
@@ -79,7 +76,7 @@ namespace OdsAccounting
             string role = RoleKeys[cmbRole.SelectedIndex < 0 ? 1 : cmbRole.SelectedIndex];
             try
             {
-                if (_userId == 0)
+                if (_userName.Length == 0)
                 {
                     string name = txtUser.Text.Trim();
                     if (name.Length < 3) { Ui.Warn("نام کاربری حداقل ۳ حرف باشد."); return; }
@@ -94,9 +91,9 @@ namespace OdsAccounting
                 {
                     if (_userName == Session.UserName && (!chkActive.Checked || role != "Admin"))
                     { Ui.Warn("نمی‌توانید دسترسی یا فعال بودن کاربر جاری را کم کنید."); return; }
-                    AppDb.Exec("UPDATE ods.SC_Users SET FullName = @f, [Role] = @r, IsActive = @a WHERE UserID = @id",
+                    AppDb.Exec("UPDATE ods.SC_Users SET FullName = @f, [Role] = @r, IsActive = @a WHERE UserLoginName = @u",
                         new SqlParameter("@f", txtFull.Text.Trim()), new SqlParameter("@r", role),
-                        new SqlParameter("@a", chkActive.Checked), new SqlParameter("@id", _userId));
+                        new SqlParameter("@a", chkActive.Checked), new SqlParameter("@u", _userName));
                     Session.Audit("USER_UPDATE", _userName + " / " + role);
                 }
                 RefreshAll();
@@ -111,10 +108,10 @@ namespace OdsAccounting
         private void BtnResetPass_Click(object sender, EventArgs e)
         {
             if (!Session.IsAdmin) { Ui.Warn("فقط مدیر سیستم دسترسی دارد."); return; }
-            if (_userId == 0) { Ui.Warn("کاربری را انتخاب کنید."); return; }
+            if (_userName.Length == 0) { Ui.Warn("کاربری را انتخاب کنید."); return; }
             if (txtPass.Text.Length < 6) { Ui.Warn("کلمه عبور جدید حداقل ۶ کاراکتر باشد."); return; }
-            AppDb.Exec("UPDATE ods.SC_Users SET PasswordHash = @h, UserLoginPassword = N'' WHERE UserID = @id",
-                new SqlParameter("@h", PasswordHasher.Hash(txtPass.Text)), new SqlParameter("@id", _userId));
+            AppDb.Exec("UPDATE ods.SC_Users SET PasswordHash = @h, UserLoginPassword = N'' WHERE UserLoginName = @u",
+                new SqlParameter("@h", PasswordHasher.Hash(txtPass.Text)), new SqlParameter("@u", _userName));
             Session.Audit("USER_PASSWORD_RESET", _userName);
             txtPass.Text = "";
             Ui.Info("کلمه عبور تغییر کرد.");

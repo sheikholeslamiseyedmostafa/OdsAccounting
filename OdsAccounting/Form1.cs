@@ -63,7 +63,7 @@ namespace OdsAccounting
 
             try
             {
-                DataTable t = AppDb.Query(@"SELECT UserID, UserLoginName, UserLoginPassword, PasswordHash, ISNULL(FullName, N'') AS FullName, [Role], IsActive
+                DataTable t = AppDb.Query(@"SELECT UserLoginName, UserLoginPassword, PasswordHash, ISNULL(FullName, N'') AS FullName, [Role], IsActive
                                             FROM ods.SC_Users WHERE UserLoginName = @u",
                     new SqlParameter("@u", username));
 
@@ -87,9 +87,9 @@ namespace OdsAccounting
                     if (ok)
                     {
                         // مهاجرت: هش امن جایگزین رمز متنی قدیمی شود
-                        AppDb.Exec("UPDATE ods.SC_Users SET PasswordHash = @h, UserLoginPassword = N'' WHERE UserID = @id",
+                        AppDb.Exec("UPDATE ods.SC_Users SET PasswordHash = @h, UserLoginPassword = N'' WHERE UserLoginName = @u",
                             new SqlParameter("@h", PasswordHasher.Hash(password)),
-                            new SqlParameter("@id", Convert.ToInt32(row["UserID"])));
+                            new SqlParameter("@u", Convert.ToString(row["UserLoginName"])));
                     }
                 }
 
@@ -99,7 +99,6 @@ namespace OdsAccounting
                     return;
                 }
 
-                Session.UserId = Convert.ToInt32(row["UserID"]);
                 Session.UserName = Convert.ToString(row["UserLoginName"]);
                 Session.FullName = Convert.ToString(row["FullName"]);
                 Session.Role = Convert.ToString(row["Role"]);
