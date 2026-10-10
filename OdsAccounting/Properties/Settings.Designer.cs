@@ -97,6 +97,7 @@ namespace OdsAccounting.Properties {
     
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Local")]
         public string DbMode {
             get { return ((string)(this["DbMode"])); }
             set { this["DbMode"] = value; }
@@ -104,6 +105,7 @@ namespace OdsAccounting.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;")]
         public string LocalConnectionString {
             get { return ((string)(this["LocalConnectionString"])); }
             set { this["LocalConnectionString"] = value; }
@@ -111,6 +113,7 @@ namespace OdsAccounting.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:YOUR-SERVER.database.windows.net,1433;Database=ODS_AccountingDB;User ID=YOUR_USER;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=False;")]
         public string CloudConnectionString {
             get { return ((string)(this["CloudConnectionString"])); }
             set { this["CloudConnectionString"] = value; }
@@ -118,6 +121,7 @@ namespace OdsAccounting.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://sandbox.tax.gov.ir/req/api/self-tsp/sync/acceptance")]
         public string MoadianEndpoint {
             get { return ((string)(this["MoadianEndpoint"])); }
             set { this["MoadianEndpoint"] = value; }
@@ -125,6 +129,7 @@ namespace OdsAccounting.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string MoadianTaxId {
             get { return ((string)(this["MoadianTaxId"])); }
             set { this["MoadianTaxId"] = value; }
@@ -132,6 +137,7 @@ namespace OdsAccounting.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string MoadianCertThumbprint {
             get { return ((string)(this["MoadianCertThumbprint"])); }
             set { this["MoadianCertThumbprint"] = value; }
@@ -139,6 +145,7 @@ namespace OdsAccounting.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
         public string ThemeName {
             get { return ((string)(this["ThemeName"])); }
             set { this["ThemeName"] = value; }

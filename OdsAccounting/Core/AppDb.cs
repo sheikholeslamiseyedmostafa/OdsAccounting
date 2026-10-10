@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Reflection;
@@ -21,8 +21,22 @@ namespace OdsAccounting
 
         public static string ModeTitle => IsCloud ? "ابری" : "لوکال (شبکه داخلی)";
 
-        public static string ConnectionString =>
-            IsCloud ? Settings.Default.CloudConnectionString : Settings.Default.LocalConnectionString;
+        public const string FallbackLocalConnection =
+            @"Server=SMSHEIKH\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
+
+        /// <summary>رشته اتصال فعال؛ اگر تنظیمات خالی باشد، مقدار پیش‌فرض لوکال استفاده می‌شود.</summary>
+        public static string ConnectionString
+        {
+            get
+            {
+                string cs = IsCloud ? Settings.Default.CloudConnectionString : Settings.Default.LocalConnectionString;
+                if (string.IsNullOrWhiteSpace(cs) || cs.Contains("YOUR-SERVER"))
+                    cs = IsCloud ? cs : FallbackLocalConnection;
+                if (string.IsNullOrWhiteSpace(cs))
+                    throw new InvalidOperationException("رشته اتصال به پایگاه داده تنظیم نشده است. از بخش تنظیمات سیستم آن را وارد کنید.");
+                return cs;
+            }
+        }
 
         public static SqlConnection Open()
         {
