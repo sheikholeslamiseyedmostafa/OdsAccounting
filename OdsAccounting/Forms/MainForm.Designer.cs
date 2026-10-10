@@ -77,9 +77,9 @@ namespace OdsAccounting
             this.flowMenu.AutoScroll = true;
             this.flowMenu.BackColor = Color.FromArgb(11, 37, 69);
             this.flowMenu.Padding = new Padding(0, 6, 0, 0);
-            this.lblSidebarHeader.Text = "ODS  |  حسابداری";
+            this.lblSidebarHeader.Text = "ODS" + System.Environment.NewLine + "نرم افزار حسابداری";
             this.lblSidebarHeader.Dock = DockStyle.Top;
-            this.lblSidebarHeader.Height = 56;
+            this.lblSidebarHeader.Height = 78;
             this.lblSidebarHeader.TextAlign = ContentAlignment.MiddleCenter;
             this.lblSidebarHeader.ForeColor = Color.White;
             this.lblSidebarHeader.BackColor = Color.FromArgb(11, 37, 69);
