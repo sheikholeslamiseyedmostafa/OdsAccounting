@@ -87,9 +87,18 @@ namespace OdsAccounting
         /// <summary>منوی فعال با رنگ تأکید مشخص می‌شود.</summary>
         private void SetActiveMenu(Button btn)
         {
-            if (_activeMenu != null) _activeMenu.BackColor = SidebarBase;
+            // همه‌ی منوها به رنگ پایه برمی‌گردند و فقط منوی انتخاب‌شده رنگ تأکید می‌گیرد
+            foreach (Control c in flowMenu.Controls)
+            {
+                if (c is Button b)
+                {
+                    b.BackColor = SidebarBase;
+                    b.Invalidate();
+                }
+            }
             _activeMenu = btn;
             btn.BackColor = Ui.Accent;
+            btn.Invalidate();
         }
 
         private void BtnMenu_Click(object sender, EventArgs e)
