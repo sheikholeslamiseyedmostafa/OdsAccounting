@@ -102,6 +102,7 @@ namespace OdsAccounting
                 {
                     b.Image = Ui.SidebarIcon(glyph, 26);
                     b.ImageAlign = ContentAlignment.MiddleRight;
+                    b.TextImageRelation = TextImageRelation.ImageBeforeText;
                 }
             }
         }

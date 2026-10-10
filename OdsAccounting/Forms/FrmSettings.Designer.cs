@@ -130,9 +130,9 @@ namespace OdsAccounting
             this.lblStatus.Text = "";
             this.lblStatus.Margin = new Padding(12,10,4,4);
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
             this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.pnlFields.Controls.Add(this.rbLocal);
             this.pnlFields.Controls.Add(this.rbCloud);

@@ -65,7 +65,7 @@ namespace OdsAccounting
             this.lblDate = new ToolStripStatusLabel();
             this.SuspendLayout();
             this.pnlSidebar.Dock = DockStyle.Right;
-            this.pnlSidebar.Width = 270;
+            this.pnlSidebar.Width = 320;
             this.pnlSidebar.BackColor = Color.FromArgb(11, 37, 69);
             this.statusStrip1.Dock = DockStyle.Bottom;
             this.tabControlMain.Dock = DockStyle.Fill;
@@ -76,7 +76,7 @@ namespace OdsAccounting
             this.flowMenu.BackColor = Color.FromArgb(11, 37, 69);
             this.flowMenu.Padding = new Padding(0, 6, 0, 0);
             this.btnMenuDashboard.Text = "میز کار (داشبورد)";
-            this.btnMenuDashboard.Width = 250;
+            this.btnMenuDashboard.Width = 300;
             this.btnMenuDashboard.Height = 46;
             this.btnMenuDashboard.Margin = new Padding(10,4,10,4);
             this.btnMenuDashboard.FlatStyle = FlatStyle.Flat;
@@ -88,7 +88,7 @@ namespace OdsAccounting
             this.btnMenuDashboard.Tag = "Dashboard";
             this.btnMenuDashboard.Click += BtnMenu_Click;
             this.btnMenuBasic.Text = "اطلاعات پایه (شرکت و سال مالی)";
-            this.btnMenuBasic.Width = 250;
+            this.btnMenuBasic.Width = 300;
             this.btnMenuBasic.Height = 46;
             this.btnMenuBasic.Margin = new Padding(10,4,10,4);
             this.btnMenuBasic.FlatStyle = FlatStyle.Flat;
@@ -100,7 +100,7 @@ namespace OdsAccounting
             this.btnMenuBasic.Tag = "Basic";
             this.btnMenuBasic.Click += BtnMenu_Click;
             this.btnMenuChart.Text = "سرفصل حساب‌ها و شناور";
-            this.btnMenuChart.Width = 250;
+            this.btnMenuChart.Width = 300;
             this.btnMenuChart.Height = 46;
             this.btnMenuChart.Margin = new Padding(10,4,10,4);
             this.btnMenuChart.FlatStyle = FlatStyle.Flat;
@@ -112,7 +112,7 @@ namespace OdsAccounting
             this.btnMenuChart.Tag = "Chart";
             this.btnMenuChart.Click += BtnMenu_Click;
             this.btnMenuDimensions.Text = "مرکز هزینه و پروژه";
-            this.btnMenuDimensions.Width = 250;
+            this.btnMenuDimensions.Width = 300;
             this.btnMenuDimensions.Height = 46;
             this.btnMenuDimensions.Margin = new Padding(10,4,10,4);
             this.btnMenuDimensions.FlatStyle = FlatStyle.Flat;
@@ -124,7 +124,7 @@ namespace OdsAccounting
             this.btnMenuDimensions.Tag = "Dimensions";
             this.btnMenuDimensions.Click += BtnMenu_Click;
             this.btnMenuJournal.Text = "اسناد حسابداری";
-            this.btnMenuJournal.Width = 250;
+            this.btnMenuJournal.Width = 300;
             this.btnMenuJournal.Height = 46;
             this.btnMenuJournal.Margin = new Padding(10,4,10,4);
             this.btnMenuJournal.FlatStyle = FlatStyle.Flat;
@@ -136,7 +136,7 @@ namespace OdsAccounting
             this.btnMenuJournal.Tag = "Journal";
             this.btnMenuJournal.Click += BtnMenu_Click;
             this.btnMenuInvoice.Text = "صدور فاکتور و مودیان";
-            this.btnMenuInvoice.Width = 250;
+            this.btnMenuInvoice.Width = 300;
             this.btnMenuInvoice.Height = 46;
             this.btnMenuInvoice.Margin = new Padding(10,4,10,4);
             this.btnMenuInvoice.FlatStyle = FlatStyle.Flat;
@@ -148,7 +148,7 @@ namespace OdsAccounting
             this.btnMenuInvoice.Tag = "Invoice";
             this.btnMenuInvoice.Click += BtnMenu_Click;
             this.btnMenuReports.Text = "گزارش‌ها و ترازها";
-            this.btnMenuReports.Width = 250;
+            this.btnMenuReports.Width = 300;
             this.btnMenuReports.Height = 46;
             this.btnMenuReports.Margin = new Padding(10,4,10,4);
             this.btnMenuReports.FlatStyle = FlatStyle.Flat;
@@ -160,7 +160,7 @@ namespace OdsAccounting
             this.btnMenuReports.Tag = "Reports";
             this.btnMenuReports.Click += BtnMenu_Click;
             this.btnMenuPayroll.Text = "حقوق و دستمزد";
-            this.btnMenuPayroll.Width = 250;
+            this.btnMenuPayroll.Width = 300;
             this.btnMenuPayroll.Height = 46;
             this.btnMenuPayroll.Margin = new Padding(10,4,10,4);
             this.btnMenuPayroll.FlatStyle = FlatStyle.Flat;
@@ -172,7 +172,7 @@ namespace OdsAccounting
             this.btnMenuPayroll.Tag = "Payroll";
             this.btnMenuPayroll.Click += BtnMenu_Click;
             this.btnMenuWorkflow.Text = "گردش کار و تایید";
-            this.btnMenuWorkflow.Width = 250;
+            this.btnMenuWorkflow.Width = 300;
             this.btnMenuWorkflow.Height = 46;
             this.btnMenuWorkflow.Margin = new Padding(10,4,10,4);
             this.btnMenuWorkflow.FlatStyle = FlatStyle.Flat;
@@ -184,7 +184,7 @@ namespace OdsAccounting
             this.btnMenuWorkflow.Tag = "Workflow";
             this.btnMenuWorkflow.Click += BtnMenu_Click;
             this.btnMenuUsers.Text = "کاربران و امنیت";
-            this.btnMenuUsers.Width = 250;
+            this.btnMenuUsers.Width = 300;
             this.btnMenuUsers.Height = 46;
             this.btnMenuUsers.Margin = new Padding(10,4,10,4);
             this.btnMenuUsers.FlatStyle = FlatStyle.Flat;
@@ -196,7 +196,7 @@ namespace OdsAccounting
             this.btnMenuUsers.Tag = "Users";
             this.btnMenuUsers.Click += BtnMenu_Click;
             this.btnMenuBackup.Text = "پشتیبان‌گیری و بازیابی";
-            this.btnMenuBackup.Width = 250;
+            this.btnMenuBackup.Width = 300;
             this.btnMenuBackup.Height = 46;
             this.btnMenuBackup.Margin = new Padding(10,4,10,4);
             this.btnMenuBackup.FlatStyle = FlatStyle.Flat;
@@ -208,7 +208,7 @@ namespace OdsAccounting
             this.btnMenuBackup.Tag = "Backup";
             this.btnMenuBackup.Click += BtnMenu_Click;
             this.btnMenuSettings.Text = "تنظیمات سیستم";
-            this.btnMenuSettings.Width = 250;
+            this.btnMenuSettings.Width = 300;
             this.btnMenuSettings.Height = 46;
             this.btnMenuSettings.Margin = new Padding(10,4,10,4);
             this.btnMenuSettings.FlatStyle = FlatStyle.Flat;
@@ -220,7 +220,7 @@ namespace OdsAccounting
             this.btnMenuSettings.Tag = "Settings";
             this.btnMenuSettings.Click += BtnMenu_Click;
             this.btnMenuAI.Text = "هوش مصنوعی";
-            this.btnMenuAI.Width = 250;
+            this.btnMenuAI.Width = 300;
             this.btnMenuAI.Height = 46;
             this.btnMenuAI.Margin = new Padding(10,4,10,4);
             this.btnMenuAI.FlatStyle = FlatStyle.Flat;
@@ -232,7 +232,7 @@ namespace OdsAccounting
             this.btnMenuAI.Tag = "AI";
             this.btnMenuAI.Click += BtnMenu_Click;
             this.btnMenuExit.Text = "خروج";
-            this.btnMenuExit.Width = 250;
+            this.btnMenuExit.Width = 300;
             this.btnMenuExit.Height = 46;
             this.btnMenuExit.Margin = new Padding(10,4,10,4);
             this.btnMenuExit.FlatStyle = FlatStyle.Flat;
@@ -251,8 +251,8 @@ namespace OdsAccounting
             // ---- ساختار کنترل‌ها ----
             // ترتیب مهم است: کنترل Fill اول، سپس StatusStrip و در آخر منوی راست (Dock Right اول پردازش می‌شود)
             this.Controls.Add(this.tabControlMain);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pnlSidebar);
+            this.Controls.Add(this.statusStrip1);
             this.pnlSidebar.Controls.Add(this.flowMenu);
             this.flowMenu.Controls.Add(this.btnMenuDashboard);
             this.flowMenu.Controls.Add(this.btnMenuBasic);

@@ -137,10 +137,10 @@ namespace OdsAccounting
             this.btnRefresh.FlatStyle = FlatStyle.Flat;
             this.btnRefresh.Click += BtnRefresh_Click;
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
-            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.splitMain);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.splitMain.Panel1.Controls.Add(this.dgvUsers);
             this.splitMain.Panel2.Controls.Add(this.dgvAudit);

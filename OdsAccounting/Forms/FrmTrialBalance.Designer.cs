@@ -115,10 +115,10 @@ namespace OdsAccounting
             this.lblSummary.Text = "آماده";
             this.lblSummary.Margin = new Padding(12,10,4,4);
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
-            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.dgvReport);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.pnlFields.Controls.Add(this.lblReport);
             this.pnlFields.Controls.Add(this.cmbReport);

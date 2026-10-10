@@ -184,11 +184,11 @@ namespace OdsAccounting
             this.dgvLines.Dock = DockStyle.Fill;
             this.dgvLines.ReadOnly = true;
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
-            this.Controls.Add(this.pnlButtons);
-            this.Controls.Add(this.pnlTotals);
             this.Controls.Add(this.splitMain);
+            this.Controls.Add(this.pnlTotals);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.pnlFields.Controls.Add(this.lblNo);
             this.pnlFields.Controls.Add(this.txtInvoiceNo);

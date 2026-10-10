@@ -169,10 +169,10 @@ namespace OdsAccounting
             this.lblBalance.Text = "جمع بدهکار: 0 | جمع بستانکار: 0 | مانده: 0";
             this.lblBalance.Margin = new Padding(12,10,4,4);
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
-            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.splitMain);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.splitMain.Panel1.Controls.Add(this.dgvVouchers);
             this.splitMain.Panel2.Controls.Add(this.dgvLines);

@@ -103,10 +103,10 @@ namespace OdsAccounting
             this.lblNote.Text = "مسیر باید از دید سرویس SQL Server قابل دسترسی باشد.";
             this.lblNote.Margin = new Padding(12,10,4,4);
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
-            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.dgvHistory);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.pnlFields.Controls.Add(this.lblPath);
             this.pnlFields.Controls.Add(this.txtPath);

@@ -61,9 +61,9 @@ namespace OdsAccounting
             this.kpiEmployees.AutoSize = true;
             this.kpiEmployees.Margin = new Padding(20,40,20,20);
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlKpi);
             this.Controls.Add(this.lblWelcome);
+            this.Controls.Add(this.pnlKpi);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.pnlKpi.Controls.Add(this.kpiVouchers);
             this.pnlKpi.Controls.Add(this.kpiPending);

@@ -193,10 +193,10 @@ namespace OdsAccounting
             this.lblPayTotal.Text = "جمع خالص پرداختی: 0";
             this.lblPayTotal.Margin = new Padding(12,10,4,4);
             // ---- ساختار کنترل‌ها ----
-            this.Controls.Add(this.pnlTitle);
-            this.Controls.Add(this.pnlFields);
-            this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.splitMain);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlTitle);
             this.pnlTitle.Controls.Add(this.lblHeader);
             this.splitMain.Panel1.Controls.Add(this.dgvEmployees);
             this.splitMain.Panel2.Controls.Add(this.dgvPayroll);
