@@ -66,8 +66,12 @@ namespace OdsAccounting
         {
             foreach (Control c in flowMenu.Controls)
             {
-                if (c is Button b && b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
-                    Ui.SetButtonIcon(b, glyph);
+                if (c is Button b)
+                {
+                    b.Font = Ui.MenuFont;
+                    if (b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
+                        Ui.SetButtonIcon(b, glyph);
+                }
             }
         }
 
