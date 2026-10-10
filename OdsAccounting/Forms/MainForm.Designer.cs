@@ -389,6 +389,7 @@ namespace OdsAccounting
             this.Name = "MainForm";
             this.Text = "نرم‌افزار حسابداری ODS";
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.WindowState = FormWindowState.Maximized;
             this.RightToLeft = RightToLeft.Yes;
             this.RightToLeftLayout = false; // جلوگیری از آینه‌شدن Dock (Right ماندن منو در سمت راست)
             this.Load += MainForm_Load;
