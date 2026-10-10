@@ -151,26 +151,6 @@ namespace OdsAccounting
             this.pnlButtons.Controls.Add(this.btnSave);
             this.pnlButtons.Controls.Add(this.lblStatus);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.lblHeader.SendToBack();
-            this.rbLocal.SendToBack();
-            this.rbCloud.SendToBack();
-            this.lblLocalConn.SendToBack();
-            this.txtLocalConn.SendToBack();
-            this.lblCloudConn.SendToBack();
-            this.txtCloudConn.SendToBack();
-            this.lblEndpoint.SendToBack();
-            this.txtEndpoint.SendToBack();
-            this.lblTaxId.SendToBack();
-            this.txtTaxId.SendToBack();
-            this.lblThumb.SendToBack();
-            this.txtThumb.SendToBack();
-            this.btnTest.SendToBack();
-            this.btnEnsure.SendToBack();
-            this.btnSave.SendToBack();
-            this.lblStatus.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1150, 720);

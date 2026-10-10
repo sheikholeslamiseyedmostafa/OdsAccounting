@@ -211,32 +211,6 @@ namespace OdsAccounting
             this.splitMain.Panel1.Controls.Add(this.dgvInvoices);
             this.splitMain.Panel2.Controls.Add(this.dgvLines);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.pnlTotals.SendToBack();
-            this.splitMain.SendToBack();
-            this.lblHeader.SendToBack();
-            this.lblNo.SendToBack();
-            this.txtInvoiceNo.SendToBack();
-            this.lblDate.SendToBack();
-            this.txtInvoiceDate.SendToBack();
-            this.lblType.SendToBack();
-            this.cmbType.SendToBack();
-            this.lblEntity.SendToBack();
-            this.cmbEntity.SendToBack();
-            this.lblStatus.SendToBack();
-            this.txtStatus.SendToBack();
-            this.btnNew.SendToBack();
-            this.btnAddLine.SendToBack();
-            this.btnDeleteLine.SendToBack();
-            this.btnSave.SendToBack();
-            this.btnSend.SendToBack();
-            this.btnDelete.SendToBack();
-            this.btnRefresh.SendToBack();
-            this.lblTotals.SendToBack();
-            this.dgvInvoices.SendToBack();
-            this.dgvLines.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1280, 780);

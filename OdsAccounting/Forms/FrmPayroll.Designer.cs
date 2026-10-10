@@ -226,38 +226,6 @@ namespace OdsAccounting
             this.pnlButtons.Controls.Add(this.btnJournal);
             this.pnlButtons.Controls.Add(this.lblPayTotal);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.splitMain.SendToBack();
-            this.lblHeader.SendToBack();
-            this.dgvEmployees.SendToBack();
-            this.dgvPayroll.SendToBack();
-            this.lblEmpCode.SendToBack();
-            this.txtEmpCode.SendToBack();
-            this.lblEmpName.SendToBack();
-            this.txtEmpName.SendToBack();
-            this.lblEmpNid.SendToBack();
-            this.txtEmpNid.SendToBack();
-            this.lblBase.SendToBack();
-            this.txtBase.SendToBack();
-            this.lblHousing.SendToBack();
-            this.txtHousing.SendToBack();
-            this.lblFood.SendToBack();
-            this.txtFood.SendToBack();
-            this.lblChild.SendToBack();
-            this.txtChild.SendToBack();
-            this.chkInsurance.SendToBack();
-            this.lblYear.SendToBack();
-            this.txtYear.SendToBack();
-            this.lblMonth.SendToBack();
-            this.cmbMonth.SendToBack();
-            this.btnNewEmp.SendToBack();
-            this.btnSaveEmp.SendToBack();
-            this.btnDeleteEmp.SendToBack();
-            this.btnRun.SendToBack();
-            this.btnJournal.SendToBack();
-            this.lblPayTotal.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1280, 780);

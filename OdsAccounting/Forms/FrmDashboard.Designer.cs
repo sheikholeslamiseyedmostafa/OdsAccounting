@@ -70,14 +70,6 @@ namespace OdsAccounting
             this.pnlKpi.Controls.Add(this.kpiInvoices);
             this.pnlKpi.Controls.Add(this.kpiEmployees);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlKpi.SendToBack();
-            this.lblWelcome.SendToBack();
-            this.lblHeader.SendToBack();
-            this.kpiVouchers.SendToBack();
-            this.kpiPending.SendToBack();
-            this.kpiInvoices.SendToBack();
-            this.kpiEmployees.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1000, 600);

@@ -193,29 +193,6 @@ namespace OdsAccounting
             this.pnlButtons.Controls.Add(this.btnRefresh);
             this.pnlButtons.Controls.Add(this.lblBalance);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.splitMain.SendToBack();
-            this.lblHeader.SendToBack();
-            this.dgvVouchers.SendToBack();
-            this.dgvLines.SendToBack();
-            this.lblVNo.SendToBack();
-            this.txtVoucherNo.SendToBack();
-            this.lblVDate.SendToBack();
-            this.txtVoucherDate.SendToBack();
-            this.lblVDesc.SendToBack();
-            this.txtVoucherDesc.SendToBack();
-            this.lblVStatus.SendToBack();
-            this.txtVoucherStatus.SendToBack();
-            this.btnNew.SendToBack();
-            this.btnAddLine.SendToBack();
-            this.btnDeleteLine.SendToBack();
-            this.btnSave.SendToBack();
-            this.btnSubmit.SendToBack();
-            this.btnDelete.SendToBack();
-            this.btnRefresh.SendToBack();
-            this.lblBalance.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1280, 780);

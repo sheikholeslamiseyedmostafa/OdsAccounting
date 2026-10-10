@@ -158,26 +158,6 @@ namespace OdsAccounting
             this.pnlButtons.Controls.Add(this.btnResetPass);
             this.pnlButtons.Controls.Add(this.btnRefresh);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.splitMain.SendToBack();
-            this.lblHeader.SendToBack();
-            this.dgvUsers.SendToBack();
-            this.dgvAudit.SendToBack();
-            this.lblUser.SendToBack();
-            this.txtUser.SendToBack();
-            this.lblFull.SendToBack();
-            this.txtFull.SendToBack();
-            this.lblPass.SendToBack();
-            this.txtPass.SendToBack();
-            this.lblRole.SendToBack();
-            this.cmbRole.SendToBack();
-            this.chkActive.SendToBack();
-            this.btnNew.SendToBack();
-            this.btnSave.SendToBack();
-            this.btnResetPass.SendToBack();
-            this.btnRefresh.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1200, 740);

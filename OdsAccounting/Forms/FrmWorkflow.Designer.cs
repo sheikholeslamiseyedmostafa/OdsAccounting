@@ -120,20 +120,6 @@ namespace OdsAccounting
             this.pnlButtons.Controls.Add(this.btnReject);
             this.pnlButtons.Controls.Add(this.btnRefresh);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.splitMain.SendToBack();
-            this.lblHeader.SendToBack();
-            this.dgvRequests.SendToBack();
-            this.dgvSteps.SendToBack();
-            this.lblFilter.SendToBack();
-            this.cmbFilter.SendToBack();
-            this.lblComment.SendToBack();
-            this.txtComment.SendToBack();
-            this.btnApprove.SendToBack();
-            this.btnReject.SendToBack();
-            this.btnRefresh.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1200, 740);

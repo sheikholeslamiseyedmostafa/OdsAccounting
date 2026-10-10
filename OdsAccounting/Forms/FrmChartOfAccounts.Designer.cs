@@ -166,26 +166,6 @@ namespace OdsAccounting
             this.pnlButtons.Controls.Add(this.btnSeed);
             this.pnlButtons.Controls.Add(this.btnRefresh);
             // ---- ترتیب z-order (برای Dock صحیح) ----
-            this.pnlTitle.SendToBack();
-            this.pnlFields.SendToBack();
-            this.pnlButtons.SendToBack();
-            this.dgvAccounts.SendToBack();
-            this.lblHeader.SendToBack();
-            this.lblCode.SendToBack();
-            this.txtCode.SendToBack();
-            this.lblTitle.SendToBack();
-            this.txtTitle.SendToBack();
-            this.lblLevel.SendToBack();
-            this.cmbLevel.SendToBack();
-            this.lblNature.SendToBack();
-            this.cmbNature.SendToBack();
-            this.chkFloating.SendToBack();
-            this.chkActive.SendToBack();
-            this.btnNew.SendToBack();
-            this.btnSave.SendToBack();
-            this.btnDelete.SendToBack();
-            this.btnSeed.SendToBack();
-            this.btnRefresh.SendToBack();
             // ---- فرم ----
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(1200, 720);

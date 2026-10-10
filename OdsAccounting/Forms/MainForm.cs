@@ -49,6 +49,8 @@ namespace OdsAccounting
             SetPersianDate();
             ApplyMenuIcons();
             btnMenuUsers.Visible = Session.IsAdmin;
+            // باز کردن خودکار میز کار هنگام ورود، تا ناحیه‌ی اصلی خالی نماند
+            OpenFormAsTab(new FrmDashboard(), "میز کار");
         }
 
         /// <summary>نمایش تاریخ شمسی امروز در نوار وضعیت.</summary>
