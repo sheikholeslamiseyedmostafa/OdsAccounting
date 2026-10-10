@@ -18,8 +18,8 @@ namespace OdsAccounting
         /// <summary>فونت اصلی: B Nazanin، بولد، سایز 11 (در بازه 10 تا 12)</summary>
         public static Font AppFont => new Font(FontFamilyName, 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
         /// <summary>فونت عنوان‌ها: سایز 12</summary>
-        /// <summary>فونت منوی کناری: سایز 12 (حداکثر مجاز)</summary>
-        public static Font MenuFont => new Font(FontFamilyName, 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+        /// <summary>فونت منوی کناری: سایز 13 (با درخواست کاربر، از قاعده 10 تا 12 عدول شده)</summary>
+        public static Font MenuFont => new Font(FontFamilyName, 13F, FontStyle.Bold, GraphicsUnit.Point, 178);
         public static Font TitleFont => new Font(FontFamilyName, 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
         /// <summary>فونت جدول‌ها: سایز 10</summary>
         public static Font GridFont => new Font(FontFamilyName, 10F, FontStyle.Bold, GraphicsUnit.Point, 178);
