@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace OdsAccounting
@@ -12,7 +13,7 @@ namespace OdsAccounting
     {
         public const string PreferredFont = "B Nazanin";
 
-        private static string FontFamilyName =>
+        public static string FontFamilyName =>
             FontFamily.Families.Any(f => f.Name == PreferredFont) ? PreferredFont : "Tahoma";
 
         /// <summary>فونت اصلی: B Nazanin، بولد، سایز 11 (در بازه 10 تا 12)</summary>
@@ -157,6 +158,102 @@ namespace OdsAccounting
             btn.Image = Icon(glyph, 28);
             btn.ImageAlign = ContentAlignment.MiddleRight;
             btn.TextAlign = ContentAlignment.MiddleCenter;
+        }
+
+        public static readonly string[] PersianMonthNames =
+        {
+            "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+            "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
+        };
+
+        private static readonly string[] PersianWeekdays =
+        {
+            "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"
+        };
+
+        /// <summary>تبدیل ارقام لاتین به فارسی (۰ تا ۹).</summary>
+        public static string Fa(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return s;
+            var sb = new StringBuilder(s.Length);
+            foreach (char ch in s)
+                sb.Append(ch >= '0' && ch <= '9' ? (char)('\u06F0' + (ch - '0')) : ch);
+            return sb.ToString();
+        }
+
+        /// <summary>تاریخ شمسی کامل، مثل: سه‌شنبه، ۱۷ شهریور ۱۴۰۵</summary>
+        public static string PersianDateLong(DateTime d)
+        {
+            var pc = new PersianCalendar();
+            string text = PersianWeekdays[(int)d.DayOfWeek] + "، " + pc.GetDayOfMonth(d) + " "
+                          + PersianMonthNames[pc.GetMonth(d) - 1] + " " + pc.GetYear(d);
+            return Fa(text);
+        }
+
+        /// <summary>آیکن MDI با رنگ دلخواه (برای کاشی‌ها و دکمه‌ها).</summary>
+        public static Bitmap GlyphBitmap(string glyph, int size, Color color)
+        {
+            var bmp = new Bitmap(size, size);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+                g.Clear(Color.Transparent);
+                using (var f = new Font(IconFontFamily, size * 0.62F, GraphicsUnit.Pixel))
+                using (var br = new SolidBrush(color))
+                using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+                    g.DrawString(glyph, f, br, new RectangleF(0, 0, size, size), sf);
+            }
+            return bmp;
+        }
+
+        /// <summary>آواتار دایره‌ای با حرف اول نام کاربر.</summary>
+        public static Bitmap Avatar(string initial, int size)
+        {
+            var bmp = new Bitmap(size, size);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.Clear(Color.Transparent);
+                using (var br = new SolidBrush(Primary)) g.FillEllipse(br, 0, 0, size - 1, size - 1);
+                using (var f = new Font(FontFamilyName, size * 0.4F, FontStyle.Bold, GraphicsUnit.Pixel))
+                using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+                    g.DrawString(initial, f, Brushes.White, new RectangleF(0, 0, size, size), sf);
+            }
+            return bmp;
+        }
+
+        public static GraphicsPath RoundedPath(Rectangle r, int radius)
+        {
+            int d = radius * 2;
+            var path = new GraphicsPath();
+            path.AddArc(r.X, r.Y, d, d, 180, 90);
+            path.AddArc(r.Right - d, r.Y, d, d, 270, 90);
+            path.AddArc(r.Right - d, r.Bottom - d, d, d, 0, 90);
+            path.AddArc(r.X, r.Bottom - d, d, d, 90, 90);
+            path.CloseFigure();
+            return path;
+        }
+
+        /// <summary>کارت گرد با حاشیه‌ی ملایم؛ با تغییر اندازه خودکار به‌روز می‌شود.</summary>
+        public static void ApplyCard(Control c, int radius, Color border)
+        {
+            EventHandler apply = (s, e) =>
+            {
+                if (c.Width <= 2 || c.Height <= 2) return;
+                c.Region = new Region(RoundedPath(new Rectangle(0, 0, c.Width, c.Height), radius));
+                c.Invalidate();
+            };
+            c.SizeChanged += apply;
+            c.Paint += (s, e) =>
+            {
+                if (c.Width <= 2 || c.Height <= 2) return;
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using (var pen = new Pen(border))
+                using (var path = RoundedPath(new Rectangle(0, 0, c.Width - 1, c.Height - 1), radius))
+                    e.Graphics.DrawPath(pen, path);
+            };
+            apply(c, EventArgs.Empty);
         }
 
         public static string Money(decimal value) =>

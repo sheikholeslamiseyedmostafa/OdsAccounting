@@ -33,6 +33,16 @@ namespace OdsAccounting
         {
             InitializeComponent();
             Ui.ApplyFont(this);
+            // آیکون‌های هدر با فونت Material Design
+            lblBellIcon.Font = new Font(Ui.IconFontFamily, 16F, GraphicsUnit.Point);
+            lblBellIcon.Text = char.ConvertFromUtf32(0xF009A);
+            lblCalIcon.Font = new Font(Ui.IconFontFamily, 16F, GraphicsUnit.Point);
+            lblCalIcon.Text = char.ConvertFromUtf32(0xF0E17);
+            pnlHeader.Paint += (sender, args) =>
+            {
+                using (var pen = new System.Drawing.Pen(Color.FromArgb(226, 232, 240)))
+                    args.Graphics.DrawLine(pen, 0, pnlHeader.Height - 1, pnlHeader.Width, pnlHeader.Height - 1);
+            };
             // پس‌زمینه‌ی گرادیانی سایدبار (از #0F172A تا #1E3A8A)
             pnlSidebar.Paint += (sender, args) =>
             {
@@ -99,8 +109,30 @@ namespace OdsAccounting
         /// <summary>
         /// تا وقتی شرکت و سال مالی انتخاب نشده، فقط میز کار، هوش مصنوعی و خروج فعال هستند.
         /// </summary>
+        /// <summary>اطلاعات هدر: تاریخ، کاربر، آواتار و شمارنده‌ی اعلان.</summary>
+        private void UpdateHeader()
+        {
+            lblDateHeader.Text = Ui.PersianDateLong(DateTime.Today);
+            string name = string.IsNullOrWhiteSpace(Session.FullName) ? Session.UserName : Session.FullName;
+            name = name ?? string.Empty;
+            lblUserName.Text = name;
+            lblUserRole.Text = RoleTitle(Session.Role);
+            lblAvatar.Text = string.Empty;
+            lblAvatar.Image = Ui.Avatar(name.Length > 0 ? name.Substring(0, 1) : "?", 46);
+
+            int badge = 0;
+            if (Session.HasCompany)
+            {
+                badge = Conv.Int(AppDb.Scalar("SELECT COUNT(*) FROM ods.SC_Vouchers WHERE CompanyID = @c AND Status = 1",
+                    new SqlParameter("@c", Session.CompanyId)));
+            }
+            lblBadge.Text = Ui.Fa(badge.ToString());
+            lblBadge.Visible = badge > 0;
+        }
+
         private void UpdateMenuState()
         {
+            UpdateHeader();
             bool ready = !string.IsNullOrWhiteSpace(Settings.Default.SelectedCompany)
                          && !string.IsNullOrWhiteSpace(Settings.Default.SelectedYear);
             foreach (Control c in flowMenu.Controls)
