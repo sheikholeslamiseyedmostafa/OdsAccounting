@@ -41,7 +41,7 @@ namespace OdsAccounting
             sellerTaxId = Convert.ToString(h["SellerId"]);
 
             var lines = AppDb.Query(@"SELECT ItemCode, ItemName, Unit, Quantity, UnitPrice, Discount, VatRate, VatAmount, LineTotal
-                                      FROM ods.SC_InvoiceLines WHERE InvoiceId = @id ORDER BY LineNo",
+                                      FROM ods.SC_InvoiceLines WHERE InvoiceId = @id ORDER BY [LineNo]",
                 new SqlParameter("@id", invoiceId));
 
             var body = new List<Dictionary<string, object>>();

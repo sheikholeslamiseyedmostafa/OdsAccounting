@@ -271,7 +271,7 @@ namespace OdsAccounting
 
         private static void InsertLine(SqlConnection conn, SqlTransaction tran, int voucherId, int lineNo, int accountId, int? entityId, string desc, decimal debit, decimal credit)
         {
-            using (var cmd = new SqlCommand(@"INSERT INTO ods.SC_VoucherLines (VoucherId, LineNo, AccountId, EntityId, Description, Debit, Credit)
+            using (var cmd = new SqlCommand(@"INSERT INTO ods.SC_VoucherLines (VoucherId, [LineNo], AccountId, EntityId, Description, Debit, Credit)
                                               VALUES (@v, @n, @a, @e, @d, @dr, @cr)", conn, tran))
             {
                 cmd.Parameters.AddWithValue("@v", voucherId);

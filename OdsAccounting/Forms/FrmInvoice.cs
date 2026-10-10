@@ -122,7 +122,7 @@ namespace OdsAccounting
             txtStatus.Text = StatusNames[Math.Min(_status, 4)] + (Conv.Str(r["MoadianReferenceNo"]).Length > 0 ? " - پیگیری: " + r["MoadianReferenceNo"] : "");
 
             DataTable lines = AppDb.Query(@"SELECT ISNULL(ItemCode, N'') AS ItemCode, ItemName, ISNULL(Unit, N'') AS Unit, Quantity, UnitPrice, Discount, VatRate
-                                            FROM ods.SC_InvoiceLines WHERE InvoiceId = @id ORDER BY LineNo", new SqlParameter("@id", id));
+                                            FROM ods.SC_InvoiceLines WHERE InvoiceId = @id ORDER BY [LineNo]", new SqlParameter("@id", id));
             _lines.Clear();
             foreach (DataRow lr in lines.Rows) _lines.ImportRow(lr);
             bool editable = _status == 0 || _status == 3;
@@ -223,7 +223,7 @@ namespace OdsAccounting
                 {
                     lineNo++;
                     LineAmounts(r, out decimal g, out decimal d, out decimal v, out decimal t);
-                    using (var cmd = new SqlCommand(@"INSERT INTO ods.SC_InvoiceLines (InvoiceId, LineNo, ItemCode, ItemName, Unit, Quantity, UnitPrice, Discount, VatRate, VatAmount, LineTotal)
+                    using (var cmd = new SqlCommand(@"INSERT INTO ods.SC_InvoiceLines (InvoiceId, [LineNo], ItemCode, ItemName, Unit, Quantity, UnitPrice, Discount, VatRate, VatAmount, LineTotal)
                                                       VALUES (@i, @n, @code, @name, @unit, @q, @p, @d, @r, @v, @t)", conn, tran))
                     {
                         cmd.Parameters.AddWithValue("@i", invId);

@@ -165,7 +165,7 @@ namespace OdsAccounting
                 LEFT JOIN ods.SC_FloatingEntities fe ON fe.EntityId = l.EntityId
                 LEFT JOIN ods.SC_CostCenters cc ON cc.CostCenterId = l.CostCenterId
                 LEFT JOIN ods.SC_CostCenters pr ON pr.CostCenterId = l.ProjectId
-                WHERE l.VoucherId = @id ORDER BY l.LineNo",
+                WHERE l.VoucherId = @id ORDER BY l.[LineNo]",
                 new SqlParameter("@id", id));
             _lines.Clear();
             foreach (DataRow lr in lines.Rows) _lines.ImportRow(lr);
@@ -286,7 +286,7 @@ namespace OdsAccounting
                     {
                         no++;
                         using (var cmd = new SqlCommand(@"INSERT INTO ods.SC_VoucherLines
-                                (VoucherId, LineNo, AccountId, EntityId, CostCenterId, ProjectId, Description, Debit, Credit)
+                                (VoucherId, [LineNo], AccountId, EntityId, CostCenterId, ProjectId, Description, Debit, Credit)
                                 VALUES (@v, @n, @a, @e, @cc, @p, @d, @dr, @cr)", conn, tran))
                         {
                             cmd.Parameters.AddWithValue("@v", id);

@@ -122,7 +122,7 @@ IF OBJECT_ID(N'ods.SC_VoucherLines') IS NULL
 CREATE TABLE ods.SC_VoucherLines (
     LineId       BIGINT IDENTITY(1,1) PRIMARY KEY,
     VoucherId    INT NOT NULL REFERENCES ods.SC_Vouchers(VoucherId) ON DELETE CASCADE,
-    LineNo       INT NOT NULL,
+    [LineNo]       INT NOT NULL,
     AccountId    INT NOT NULL REFERENCES ods.SC_Accounts(AccountId),
     EntityId     INT NULL REFERENCES ods.SC_FloatingEntities(EntityId),
     CostCenterId INT NULL REFERENCES ods.SC_CostCenters(CostCenterId),
@@ -158,7 +158,7 @@ IF OBJECT_ID(N'ods.SC_InvoiceLines') IS NULL
 CREATE TABLE ods.SC_InvoiceLines (
     LineId     INT IDENTITY(1,1) PRIMARY KEY,
     InvoiceId  INT NOT NULL REFERENCES ods.SC_Invoices(InvoiceId) ON DELETE CASCADE,
-    LineNo     INT NOT NULL,
+    [LineNo]     INT NOT NULL,
     ItemCode   NVARCHAR(50)  NULL,
     ItemName   NVARCHAR(200) NOT NULL,
     Unit       NVARCHAR(30)  NULL,
