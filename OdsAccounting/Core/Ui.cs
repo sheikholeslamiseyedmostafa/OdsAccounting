@@ -58,6 +58,7 @@ namespace OdsAccounting
             root.Font = AppFont;
             foreach (Control c in root.Controls)
             {
+                if (c.Name.StartsWith("btnMenu") || c.Name == "lblSidebarHeader") continue; // فونت منو در Designer تعریف شده
                 if (c is DataGridView grid) StyleGrid(grid);
                 else if (c is MenuStrip || c is StatusStrip || c is ToolStrip) ApplyToolStripFont(c as ToolStrip);
                 else ApplyFont(c);
