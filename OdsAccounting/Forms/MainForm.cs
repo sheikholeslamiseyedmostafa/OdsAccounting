@@ -100,13 +100,13 @@ namespace OdsAccounting
                 b.FlatAppearance.MouseDownBackColor = SidebarHover;
                 b.BackColor = SidebarBase;
                 b.ForeColor = Color.White;
-                b.TextAlign = ContentAlignment.MiddleRight;
+                b.TextAlign = ContentAlignment.MiddleCenter;
                 b.Padding = new Padding(14, 0, 14, 0);
                 if (b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
                 {
                     b.Image = Ui.SidebarIcon(glyph, 26);
-                    b.ImageAlign = ContentAlignment.MiddleLeft;
-                    b.TextImageRelation = TextImageRelation.TextBeforeImage;
+                    b.ImageAlign = ContentAlignment.MiddleRight;
+                    b.TextImageRelation = TextImageRelation.ImageBeforeText;
                 }
             }
         }

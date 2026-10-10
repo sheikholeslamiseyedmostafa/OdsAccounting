@@ -36,10 +36,10 @@ namespace OdsAccounting
             _iconFamily = _pfc.Families.Length > 1 ? _pfc.Families[1].Name : "Segoe UI Symbol";
         }
 
-        /// <summary>فونت منوی کناری: Vazirmatn Bold، سایز 13 (درخواست کاربر).</summary>
+        /// <summary>فونت منوی کناری: B Nazanin Bold، سایز 12.</summary>
         public static Font MenuFont
         {
-            get { LoadAppFonts(); return new Font(_menuFamily, 13F, FontStyle.Bold, GraphicsUnit.Point, 178); }
+            get { LoadAppFonts(); return new Font(FontFamilyName, 12F, FontStyle.Bold, GraphicsUnit.Point, 178); }
         }
 
         /// <summary>فونت آیکون‌های منو (Material Design Icons).</summary>
