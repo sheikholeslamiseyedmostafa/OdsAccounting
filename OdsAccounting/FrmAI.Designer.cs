@@ -111,7 +111,7 @@
             ClientSize = new Size(1415, 1047);
             Controls.Add(richTextBox1);
             Controls.Add(panel1);
-            Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            Font = new Font("Vazirmatn", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             Margin = new Padding(5, 4, 5, 4);
             Name = "FrmAI";
             RightToLeft = RightToLeft.Yes;

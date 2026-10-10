@@ -42,7 +42,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Font = new Font("B Nazanin", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            toolStrip1.Font = new Font("Vazirmatn", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
             toolStrip1.GripMargin = new Padding(6);
             toolStrip1.ImageScalingSize = new Size(32, 32);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddPeriod, btnDeletePeriod, btnEditPeriod, btnSelect, btnCancel });
@@ -117,7 +117,7 @@
             ClientSize = new Size(1039, 582);
             Controls.Add(dataGridView1);
             Controls.Add(toolStrip1);
-            Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            Font = new Font("Vazirmatn", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             Margin = new Padding(5);
             Name = "FrmSelectFinancialPeriod";
             RightToLeft = RightToLeft.Yes;

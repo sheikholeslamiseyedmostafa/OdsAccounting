@@ -66,7 +66,7 @@
             button1.BackColor = SystemColors.ActiveCaption;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("B Nazanin", 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            button1.Font = new Font("Vazirmatn", 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
             button1.Location = new Point(6, 4);
             button1.Name = "button1";
             button1.Size = new Size(69, 46);
@@ -79,7 +79,7 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Dock = DockStyle.Top;
-            label1.Font = new Font("B Nazanin", 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            label1.Font = new Font("Vazirmatn", 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
             label1.Size = new Size(1200, 55);
@@ -94,7 +94,7 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Font = new Font("B Nazanin", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            tabControl1.Font = new Font("Vazirmatn", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
             tabControl1.ItemSize = new Size(170, 49);
             tabControl1.Location = new Point(14, 61);
             tabControl1.Margin = new Padding(5);
@@ -125,7 +125,7 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("B Nazanin", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            checkBox2.Font = new Font("Vazirmatn", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 178);
             checkBox2.Location = new Point(138, 165);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(280, 50);
@@ -137,7 +137,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("B Nazanin", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            checkBox1.Font = new Font("Vazirmatn", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 178);
             checkBox1.Location = new Point(137, 69);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(281, 50);
@@ -149,7 +149,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            label4.Font = new Font("Vazirmatn", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             label4.ForeColor = SystemColors.ActiveCaptionText;
             label4.Location = new Point(911, 165);
             label4.Name = "label4";
@@ -162,7 +162,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            label3.Font = new Font("Vazirmatn", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             label3.ForeColor = SystemColors.ActiveCaptionText;
             label3.Location = new Point(911, 69);
             label3.Name = "label3";
@@ -213,7 +213,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            label2.Font = new Font("Vazirmatn", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             label2.ForeColor = SystemColors.ActiveCaptionText;
             label2.Location = new Point(103, 35);
             label2.Name = "label2";
@@ -226,7 +226,7 @@
             // button3
             // 
             button3.BackColor = SystemColors.Window;
-            button3.Font = new Font("B Nazanin", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            button3.Font = new Font("Vazirmatn", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
             button3.Location = new Point(788, 35);
             button3.Name = "button3";
             button3.Size = new Size(164, 59);
@@ -238,7 +238,7 @@
             // button2
             // 
             button2.BackColor = SystemColors.Window;
-            button2.Font = new Font("B Nazanin", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            button2.Font = new Font("Vazirmatn", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
             button2.Location = new Point(971, 35);
             button2.Name = "button2";
             button2.Size = new Size(164, 59);

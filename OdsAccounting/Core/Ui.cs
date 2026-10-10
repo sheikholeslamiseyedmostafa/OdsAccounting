@@ -11,12 +11,21 @@ namespace OdsAccounting
     /// <summary>فونت، تم، آیکن و ابزارهای کمکی رابط کاربری (فارسی / شمسی).</summary>
     public static class Ui
     {
-        public const string PreferredFont = "B Nazanin";
+        /// <summary>فونت اصلی برنامه: Vazirmatn (فایل همراه برنامه در پوشه Fonts).</summary>
+        public const string PreferredFont = "Vazirmatn";
 
-        public static string FontFamilyName =>
-            FontFamily.Families.Any(f => f.Name == PreferredFont) ? PreferredFont : "Tahoma";
+        /// <summary>نام خانواده‌ی فونت: ابتدا فونت همراه، سپس فونت نصب‌شده در ویندوز، در نهایت Tahoma.</summary>
+        public static string FontFamilyName
+        {
+            get
+            {
+                LoadAppFonts();
+                if (_pfc != null && _pfc.Families.Any(f => f.Name == PreferredFont)) return PreferredFont;
+                return FontFamily.Families.Any(f => f.Name == PreferredFont) ? PreferredFont : "Tahoma";
+            }
+        }
 
-        /// <summary>فونت اصلی: B Nazanin، بولد، سایز 11 (در بازه 10 تا 12)</summary>
+        /// <summary>فونت اصلی: Vazirmatn، بولد، سایز 11 (در بازه 10 تا 12)</summary>
         public static Font AppFont => new Font(FontFamilyName, 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
         /// <summary>فونت عنوان‌ها: سایز 12</summary>
         private static System.Drawing.Text.PrivateFontCollection _pfc;
@@ -37,7 +46,7 @@ namespace OdsAccounting
             _iconFamily = _pfc.Families.Length > 1 ? _pfc.Families[1].Name : "Segoe UI Symbol";
         }
 
-        /// <summary>فونت منوی کناری: B Nazanin Bold، سایز 12.</summary>
+        /// <summary>فونت منوی کناری: Vazirmatn Bold، سایز 12.</summary>
         public static Font MenuFont
         {
             get { LoadAppFonts(); return new Font(FontFamilyName, 12F, FontStyle.Bold, GraphicsUnit.Point, 178); }

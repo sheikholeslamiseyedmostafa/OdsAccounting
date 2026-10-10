@@ -167,7 +167,7 @@ namespace OdsAccounting
             this.lblSidebarHeader.TextAlign = ContentAlignment.MiddleCenter;
             this.lblSidebarHeader.ForeColor = Color.White;
             this.lblSidebarHeader.BackColor = Color.Transparent;
-            this.lblSidebarHeader.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblSidebarHeader.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuDashboard.Text = "میز کار (داشبورد)";
             this.btnMenuDashboard.Width = 325;
             this.btnMenuDashboard.Height = 60;
@@ -178,7 +178,7 @@ namespace OdsAccounting
             this.btnMenuDashboard.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuDashboard.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuDashboard.UseVisualStyleBackColor = false;
-            this.btnMenuDashboard.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuDashboard.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuDashboard.FlatAppearance.BorderSize = 0;
             this.btnMenuDashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuDashboard.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -196,7 +196,7 @@ namespace OdsAccounting
             this.btnMenuBasic.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuBasic.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuBasic.UseVisualStyleBackColor = false;
-            this.btnMenuBasic.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuBasic.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuBasic.FlatAppearance.BorderSize = 0;
             this.btnMenuBasic.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuBasic.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -214,7 +214,7 @@ namespace OdsAccounting
             this.btnMenuChart.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuChart.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuChart.UseVisualStyleBackColor = false;
-            this.btnMenuChart.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuChart.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuChart.FlatAppearance.BorderSize = 0;
             this.btnMenuChart.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuChart.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -232,7 +232,7 @@ namespace OdsAccounting
             this.btnMenuDimensions.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuDimensions.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuDimensions.UseVisualStyleBackColor = false;
-            this.btnMenuDimensions.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuDimensions.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuDimensions.FlatAppearance.BorderSize = 0;
             this.btnMenuDimensions.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuDimensions.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -250,7 +250,7 @@ namespace OdsAccounting
             this.btnMenuJournal.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuJournal.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuJournal.UseVisualStyleBackColor = false;
-            this.btnMenuJournal.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuJournal.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuJournal.FlatAppearance.BorderSize = 0;
             this.btnMenuJournal.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuJournal.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -268,7 +268,7 @@ namespace OdsAccounting
             this.btnMenuInvoice.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuInvoice.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuInvoice.UseVisualStyleBackColor = false;
-            this.btnMenuInvoice.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuInvoice.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuInvoice.FlatAppearance.BorderSize = 0;
             this.btnMenuInvoice.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuInvoice.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -286,7 +286,7 @@ namespace OdsAccounting
             this.btnMenuReports.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuReports.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuReports.UseVisualStyleBackColor = false;
-            this.btnMenuReports.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuReports.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuReports.FlatAppearance.BorderSize = 0;
             this.btnMenuReports.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuReports.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -304,7 +304,7 @@ namespace OdsAccounting
             this.btnMenuPayroll.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuPayroll.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuPayroll.UseVisualStyleBackColor = false;
-            this.btnMenuPayroll.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuPayroll.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuPayroll.FlatAppearance.BorderSize = 0;
             this.btnMenuPayroll.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuPayroll.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -322,7 +322,7 @@ namespace OdsAccounting
             this.btnMenuWorkflow.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuWorkflow.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuWorkflow.UseVisualStyleBackColor = false;
-            this.btnMenuWorkflow.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuWorkflow.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuWorkflow.FlatAppearance.BorderSize = 0;
             this.btnMenuWorkflow.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuWorkflow.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -340,7 +340,7 @@ namespace OdsAccounting
             this.btnMenuUsers.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuUsers.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuUsers.UseVisualStyleBackColor = false;
-            this.btnMenuUsers.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuUsers.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuUsers.FlatAppearance.BorderSize = 0;
             this.btnMenuUsers.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuUsers.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -358,7 +358,7 @@ namespace OdsAccounting
             this.btnMenuBackup.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuBackup.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuBackup.UseVisualStyleBackColor = false;
-            this.btnMenuBackup.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuBackup.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuBackup.FlatAppearance.BorderSize = 0;
             this.btnMenuBackup.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuBackup.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -376,7 +376,7 @@ namespace OdsAccounting
             this.btnMenuSettings.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuSettings.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuSettings.UseVisualStyleBackColor = false;
-            this.btnMenuSettings.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuSettings.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuSettings.FlatAppearance.BorderSize = 0;
             this.btnMenuSettings.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuSettings.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -394,7 +394,7 @@ namespace OdsAccounting
             this.btnMenuAI.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuAI.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuAI.UseVisualStyleBackColor = false;
-            this.btnMenuAI.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuAI.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuAI.FlatAppearance.BorderSize = 0;
             this.btnMenuAI.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuAI.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);
@@ -412,7 +412,7 @@ namespace OdsAccounting
             this.btnMenuExit.TextAlign = ContentAlignment.MiddleCenter;
             this.btnMenuExit.ImageAlign = ContentAlignment.MiddleRight;
             this.btnMenuExit.UseVisualStyleBackColor = false;
-            this.btnMenuExit.Font = new System.Drawing.Font("B Nazanin", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnMenuExit.Font = new System.Drawing.Font("Vazirmatn", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnMenuExit.FlatAppearance.BorderSize = 0;
             this.btnMenuExit.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 58, 138);
             this.btnMenuExit.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 58, 138);

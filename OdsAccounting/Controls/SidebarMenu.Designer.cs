@@ -1,3 +1,5 @@
+using ODS.Accounting.Themes;
+
 namespace ODS.Accounting.Controls
 {
     partial class SidebarMenu
@@ -11,15 +13,19 @@ namespace ODS.Accounting.Controls
         private Label lblSubtitle;
 
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
-        private Guna.UI2.WinForms.Guna2Button btnMasterData;
-        private Guna.UI2.WinForms.Guna2Button btnAccounting;
-        private Guna.UI2.WinForms.Guna2Button btnTreasury;
-        private Guna.UI2.WinForms.Guna2Button btnSales;
-        private Guna.UI2.WinForms.Guna2Button btnPurchase;
-        private Guna.UI2.WinForms.Guna2Button btnWarehouse;
+        private Guna.UI2.WinForms.Guna2Button btnBasic;
+        private Guna.UI2.WinForms.Guna2Button btnChart;
+        private Guna.UI2.WinForms.Guna2Button btnDimensions;
+        private Guna.UI2.WinForms.Guna2Button btnJournal;
+        private Guna.UI2.WinForms.Guna2Button btnInvoice;
         private Guna.UI2.WinForms.Guna2Button btnReports;
+        private Guna.UI2.WinForms.Guna2Button btnPayroll;
+        private Guna.UI2.WinForms.Guna2Button btnWorkflow;
+        private Guna.UI2.WinForms.Guna2Button btnUsers;
+        private Guna.UI2.WinForms.Guna2Button btnBackup;
         private Guna.UI2.WinForms.Guna2Button btnSettings;
         private Guna.UI2.WinForms.Guna2Button btnAI;
+        private Guna.UI2.WinForms.Guna2Button btnExit;
 
         protected override void Dispose(bool disposing)
         {
@@ -37,109 +43,110 @@ namespace ODS.Accounting.Controls
             lblTitle = new Label();
             lblSubtitle = new Label();
 
-            btnDashboard = CreateMenuButton("داشبورد", 20);
-            btnMasterData = CreateMenuButton("اطلاعات پایه", 80);
-            btnAccounting = CreateMenuButton("حسابداری", 140);
-            btnTreasury = CreateMenuButton("خزانه", 200);
-            btnSales = CreateMenuButton("فروش", 260);
-            btnPurchase = CreateMenuButton("خرید", 320);
-            btnWarehouse = CreateMenuButton("انبار", 380);
-            btnReports = CreateMenuButton("گزارشات", 440);
-            btnSettings = CreateMenuButton("تنظیمات", 500);
-            btnAI = CreateMenuButton("هوش مصنوعی", 560);
+            // ۱۴ منو (همان ترتیب و متن منوی اصلی برنامه)، موقعیت: بالا = ۱۰ + اندیس × ۸۰
+            btnDashboard = CreateMenuButton("میز کار (داشبورد)", "Dashboard", "\U000F056E", 0);
+            btnBasic = CreateMenuButton("اطلاعات پایه (شرکت و سال مالی)", "Basic", "\U000F01D7", 1);
+            btnChart = CreateMenuButton("سرفصل حساب‌ها و شناور", "Chart", "\U000F04AA", 2);
+            btnDimensions = CreateMenuButton("مرکز هزینه و پروژه", "Dimensions", "\U000F07AF", 3);
+            btnJournal = CreateMenuButton("اسناد حسابداری", "Journal", "\U000F14E7", 4);
+            btnInvoice = CreateMenuButton("صدور فاکتور و مودیان", "Invoice", "\U000F0824", 5);
+            btnReports = CreateMenuButton("گزارش‌ها و ترازها", "Reports", "\U000F0128", 6);
+            btnPayroll = CreateMenuButton("حقوق و دستمزد", "Payroll", "\U000F1097", 7);
+            btnWorkflow = CreateMenuButton("گردش کار و تایید", "Workflow", "\U000F0791", 8);
+            btnUsers = CreateMenuButton("کاربران و امنیت", "Users", "\U000F0849", 9);
+            btnBackup = CreateMenuButton("پشتیبان‌گیری و بازیابی", "Backup", "\U000F006F", 10);
+            btnSettings = CreateMenuButton("تنظیمات سیستم", "Settings", "\U000F0493", 11);
+            btnAI = CreateMenuButton("هوش مصنوعی", "AI", "\U000F06A9", 12);
+            btnExit = CreateMenuButton("خروج", "Exit", "\U000F0425", 13);
 
             SuspendLayout();
+            pnlHeader.SuspendLayout();
+            pnlMenu.SuspendLayout();
 
             //
             // SidebarMenu
             //
-            BackColor = Color.FromArgb(15, 23, 42);
-            Dock = DockStyle.Right;
-            Width = 280;
             Name = "SidebarMenu";
+            BackColor = ThemeColors.Sidebar;
+            Dock = DockStyle.Right;
+            Width = 350;
 
             //
-            // pnlHeader
+            // pnlHeader (بالا، ارتفاع ۱۳۰)
             //
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Height = 130;
-            pnlHeader.FillColor = Color.FromArgb(10, 15, 30);
+            pnlHeader.FillColor = ThemeColors.SidebarDark;
 
-            //
-            // lblTitle
-            //
+            // ترتیب Add: Fill اول، سپس Top
+            pnlHeader.Controls.Add(lblSubtitle);
+            pnlHeader.Controls.Add(lblTitle);
+
+            lblTitle.Dock = DockStyle.Top;
+            lblTitle.Height = 70;
             lblTitle.Text = "ODS";
             lblTitle.ForeColor = Color.White;
             lblTitle.Font = new Font("Vazirmatn", 20F, FontStyle.Bold);
-            lblTitle.AutoSize = true;
-            lblTitle.Location = new Point(165, 25);
+            lblTitle.TextAlign = ContentAlignment.BottomCenter;
 
-            //
-            // lblSubtitle
-            //
+            lblSubtitle.Dock = DockStyle.Fill;
             lblSubtitle.Text = "نرم افزار حسابداری";
             lblSubtitle.ForeColor = Color.Silver;
-            lblSubtitle.AutoSize = true;
-            lblSubtitle.Font = new Font("Vazirmatn", 10F);
-            lblSubtitle.Location = new Point(95, 70);
-
-            pnlHeader.Controls.Add(lblTitle);
-            pnlHeader.Controls.Add(lblSubtitle);
+            lblSubtitle.Font = new Font("Vazirmatn", 10F, FontStyle.Bold);
+            lblSubtitle.TextAlign = ContentAlignment.TopCenter;
 
             //
-            // pnlMenu
+            // pnlMenu (پر کننده، با اسکرول در صورت بلندتر شدن از فرم)
             //
             pnlMenu.Dock = DockStyle.Fill;
             pnlMenu.FillColor = Color.Transparent;
+            pnlMenu.AutoScroll = true;
 
-            pnlMenu.Controls.Add(btnDashboard);
-            pnlMenu.Controls.Add(btnMasterData);
-            pnlMenu.Controls.Add(btnAccounting);
-            pnlMenu.Controls.Add(btnTreasury);
-            pnlMenu.Controls.Add(btnSales);
-            pnlMenu.Controls.Add(btnPurchase);
-            pnlMenu.Controls.Add(btnWarehouse);
-            pnlMenu.Controls.Add(btnReports);
-            pnlMenu.Controls.Add(btnSettings);
+            pnlMenu.Controls.Add(btnExit);
             pnlMenu.Controls.Add(btnAI);
+            pnlMenu.Controls.Add(btnSettings);
+            pnlMenu.Controls.Add(btnBackup);
+            pnlMenu.Controls.Add(btnUsers);
+            pnlMenu.Controls.Add(btnWorkflow);
+            pnlMenu.Controls.Add(btnPayroll);
+            pnlMenu.Controls.Add(btnReports);
+            pnlMenu.Controls.Add(btnInvoice);
+            pnlMenu.Controls.Add(btnJournal);
+            pnlMenu.Controls.Add(btnDimensions);
+            pnlMenu.Controls.Add(btnChart);
+            pnlMenu.Controls.Add(btnBasic);
+            pnlMenu.Controls.Add(btnDashboard);
 
-            btnDashboard.Click += btnDashboard_Click;
-            btnMasterData.Click += btnMasterData_Click;
-
+            // ترتیب Add کنترل: Fill (منو) اول، سپس Top (هدر)
             Controls.Add(pnlMenu);
             Controls.Add(pnlHeader);
 
+            pnlMenu.ResumeLayout(false);
+            pnlHeader.ResumeLayout(false);
             ResumeLayout(false);
         }
 
-        private Guna.UI2.WinForms.Guna2Button CreateMenuButton(
-            string text,
-            int top)
+        /// <summary>دکمه‌ی منو: ۳۲۵×۶۰، متن وسط‌چین، آیکون در سمت راست متن، بدون حاشیه.</summary>
+        private Guna.UI2.WinForms.Guna2Button CreateMenuButton(string text, string key, string glyph, int index)
         {
             var btn = new Guna.UI2.WinForms.Guna2Button();
 
+            btn.Tag = key;
             btn.Text = text;
-
-            btn.Width = 240;
-            btn.Height = 48;
-
-            btn.Left = 20;
-            btn.Top = top;
-
+            btn.Size = new Size(325, 60);
+            btn.Location = new Point(12, 10 + index * 80);
             btn.BorderRadius = 12;
-
+            btn.BorderThickness = 0;
             btn.FillColor = Color.Transparent;
-
             btn.ForeColor = Color.White;
-
-            btn.Font = new Font("Vazirmatn", 10F);
-
-            btn.TextAlign = HorizontalAlignment.Right;
-
-            btn.HoverState.FillColor =
-                Color.FromArgb(37, 99, 235);
-
+            btn.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
+            btn.TextAlign = HorizontalAlignment.Center;
+            btn.ImageAlign = HorizontalAlignment.Right;
+            btn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn.Image = global::OdsAccounting.Ui.SidebarIcon(glyph, 26);
+            btn.HoverState.FillColor = ThemeColors.Hover;
             btn.Cursor = Cursors.Hand;
+            btn.Click += MenuButton_Click;
 
             return btn;
         }

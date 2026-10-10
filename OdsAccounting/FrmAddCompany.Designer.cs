@@ -40,7 +40,7 @@
             // lblCompanyName
             // 
             lblCompanyName.AutoSize = true;
-            lblCompanyName.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblCompanyName.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblCompanyName.Location = new Point(68, 65);
             lblCompanyName.Name = "lblCompanyName";
             lblCompanyName.Size = new Size(168, 51);
@@ -49,7 +49,7 @@
             // 
             // txtCompanyName
             // 
-            txtCompanyName.Font = new Font("B Nazanin", 10.125F);
+            txtCompanyName.Font = new Font("Vazirmatn", 10.125F);
             txtCompanyName.Location = new Point(242, 69);
             txtCompanyName.Name = "txtCompanyName";
             txtCompanyName.Size = new Size(701, 48);
@@ -58,7 +58,7 @@
             // lblNationalID
             // 
             lblNationalID.AutoSize = true;
-            lblNationalID.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblNationalID.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblNationalID.Location = new Point(78, 133);
             lblNationalID.Name = "lblNationalID";
             lblNationalID.Size = new Size(158, 51);
@@ -67,7 +67,7 @@
             // 
             // txtNationalID
             // 
-            txtNationalID.Font = new Font("B Nazanin", 10.125F);
+            txtNationalID.Font = new Font("Vazirmatn", 10.125F);
             txtNationalID.Location = new Point(242, 137);
             txtNationalID.Name = "txtNationalID";
             txtNationalID.Size = new Size(701, 48);
@@ -76,7 +76,7 @@
             // lblEconomicCode
             // 
             lblEconomicCode.AutoSize = true;
-            lblEconomicCode.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblEconomicCode.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblEconomicCode.Location = new Point(34, 210);
             lblEconomicCode.Name = "lblEconomicCode";
             lblEconomicCode.Size = new Size(202, 51);
@@ -85,7 +85,7 @@
             // 
             // txtEconomicCode
             // 
-            txtEconomicCode.Font = new Font("B Nazanin", 10.125F);
+            txtEconomicCode.Font = new Font("Vazirmatn", 10.125F);
             txtEconomicCode.Location = new Point(242, 210);
             txtEconomicCode.Name = "txtEconomicCode";
             txtEconomicCode.Size = new Size(701, 48);
@@ -94,7 +94,7 @@
             // lblRegistrationNo
             // 
             lblRegistrationNo.AutoSize = true;
-            lblRegistrationNo.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblRegistrationNo.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblRegistrationNo.Location = new Point(83, 280);
             lblRegistrationNo.Name = "lblRegistrationNo";
             lblRegistrationNo.Size = new Size(153, 51);
@@ -103,7 +103,7 @@
             // 
             // txtRegistrationNo
             // 
-            txtRegistrationNo.Font = new Font("B Nazanin", 10.125F);
+            txtRegistrationNo.Font = new Font("Vazirmatn", 10.125F);
             txtRegistrationNo.Location = new Point(242, 280);
             txtRegistrationNo.Name = "txtRegistrationNo";
             txtRegistrationNo.Size = new Size(701, 48);
@@ -112,7 +112,7 @@
             // lblPhone
             // 
             lblPhone.AutoSize = true;
-            lblPhone.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblPhone.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblPhone.Location = new Point(149, 348);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(87, 51);
@@ -121,7 +121,7 @@
             // 
             // txtPhone
             // 
-            txtPhone.Font = new Font("B Nazanin", 10.125F);
+            txtPhone.Font = new Font("Vazirmatn", 10.125F);
             txtPhone.Location = new Point(242, 352);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(701, 48);
@@ -130,7 +130,7 @@
             // lblAddress
             // 
             lblAddress.AutoSize = true;
-            lblAddress.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblAddress.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblAddress.Location = new Point(134, 422);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(102, 51);
@@ -139,7 +139,7 @@
             // 
             // txtAddress
             // 
-            txtAddress.Font = new Font("B Nazanin", 10.125F);
+            txtAddress.Font = new Font("Vazirmatn", 10.125F);
             txtAddress.Location = new Point(242, 422);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(701, 48);
@@ -148,7 +148,7 @@
             // lblDescription
             // 
             lblDescription.AutoSize = true;
-            lblDescription.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblDescription.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblDescription.Location = new Point(96, 544);
             lblDescription.Name = "lblDescription";
             lblDescription.Size = new Size(140, 51);
@@ -157,7 +157,7 @@
             // 
             // txtDescription
             // 
-            txtDescription.Font = new Font("B Nazanin", 10.125F);
+            txtDescription.Font = new Font("Vazirmatn", 10.125F);
             txtDescription.Location = new Point(242, 503);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
@@ -167,7 +167,7 @@
             // lblColor
             // 
             lblColor.AutoSize = true;
-            lblColor.Font = new Font("B Nazanin", 12F, FontStyle.Bold);
+            lblColor.Font = new Font("Vazirmatn", 12F, FontStyle.Bold);
             lblColor.Location = new Point(151, 668);
             lblColor.Name = "lblColor";
             lblColor.Size = new Size(85, 51);
@@ -177,7 +177,7 @@
             // cmbColor
             // 
             cmbColor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbColor.Font = new Font("B Nazanin", 10.125F);
+            cmbColor.Font = new Font("Vazirmatn", 10.125F);
             cmbColor.FormattingEnabled = true;
             cmbColor.ItemHeight = 40;
             cmbColor.Items.AddRange(new object[] { "بدون رنگ", "قرمز", "آبی", "سبز", "زرد" });
@@ -200,7 +200,7 @@
             // 
             // btnSave
             // 
-            btnSave.Font = new Font("B Nazanin", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            btnSave.Font = new Font("Vazirmatn", 12F, FontStyle.Bold, GraphicsUnit.Point, 178);
             btnSave.Location = new Point(462, 777);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(225, 75);
