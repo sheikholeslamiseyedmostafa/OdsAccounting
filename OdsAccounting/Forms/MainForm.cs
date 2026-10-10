@@ -50,6 +50,7 @@ namespace OdsAccounting
             SetPersianDate();
             ApplyMenuIcons();
             btnMenuUsers.Visible = Session.IsAdmin;
+            UpdateMenuState();
             // باز کردن خودکار میز کار هنگام ورود، تا ناحیه‌ی اصلی خالی نماند
             OpenFormAsTab(new FrmDashboard(), "میز کار");
         }
@@ -83,6 +84,22 @@ namespace OdsAccounting
                 _menuBaseColors[b] = b.BackColor;
                 if (b.Tag != null && MenuIcons.TryGetValue(b.Tag.ToString(), out string glyph))
                     b.Image = Ui.SidebarIcon(glyph, 26);
+            }
+        }
+
+        /// <summary>
+        /// تا وقتی شرکت و سال مالی انتخاب نشده، فقط میز کار، هوش مصنوعی و خروج فعال هستند.
+        /// </summary>
+        private void UpdateMenuState()
+        {
+            bool ready = !string.IsNullOrWhiteSpace(Settings.Default.SelectedCompany)
+                         && !string.IsNullOrWhiteSpace(Settings.Default.SelectedYear);
+            foreach (Control c in flowMenu.Controls)
+            {
+                if (!(c is Button b)) continue;
+                string tag = b.Tag?.ToString();
+                bool alwaysOn = tag == "Dashboard" || tag == "AI" || tag == "Exit";
+                b.Enabled = alwaysOn || ready;
             }
         }
 
@@ -139,7 +156,14 @@ namespace OdsAccounting
             OpenFormAsTab(form, title);
         }
 
-        private void OpenCompanySelection() => OpenFormAsTab(new FrmSelectCompany(), "انتخاب شرکت");
+        // انتخاب شرکت و سال مالی به‌صورت پنجره‌ی مودال از نوار وضعیت باز می‌شود (نه تب)
+        private void OpenCompanySelection()
+        {
+            using (var frm = new FrmSelectCompany())
+            {
+                frm.ShowDialog(this);
+            }
+        }
 
         private void OpenFinancialPeriod()
         {
@@ -149,7 +173,10 @@ namespace OdsAccounting
                 Ui.Warn("لطفاً ابتدا یک شرکت را انتخاب کنید.", "انتخاب سال مالی");
                 return;
             }
-            OpenFormAsTab(new FrmSelectFinancialPeriod(selectedCompany), "انتخاب سال مالی");
+            using (var frm = new FrmSelectFinancialPeriod(selectedCompany))
+            {
+                frm.ShowDialog(this);
+            }
         }
 
         public void SetSelectedCompany(string companyName)
@@ -186,6 +213,7 @@ namespace OdsAccounting
             }
             Session.Audit("COMPANY_SELECT", companyName);
             Text = "نرم‌افزار حسابداری ODS - " + companyName;
+            UpdateMenuState();
             Ui.Info($"شرکت «{companyName}» با موفقیت انتخاب شد.");
         }
 
@@ -196,6 +224,7 @@ namespace OdsAccounting
             lblYear.Text = financialPeriodName;
             Settings.Default.SelectedYear = financialPeriodName;
             Settings.Default.Save();
+            UpdateMenuState();
             Ui.Info($"سال مالی «{financialPeriodName}» با موفقیت انتخاب شد.");
         }
 
