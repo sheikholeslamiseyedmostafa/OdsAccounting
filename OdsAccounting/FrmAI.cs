@@ -9,7 +9,7 @@ namespace OdsAccounting
 {
     public partial class FrmAI : Form
     {
-        private string connectionString = "Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
+        private string connectionString => AppDb.ConnectionString;
 
         private enum ChatState
         {
@@ -37,6 +37,7 @@ namespace OdsAccounting
         public FrmAI()
         {
             InitializeComponent();
+            Ui.ApplyFont(this);
             if (richTextBox1 != null) richTextBox1.RightToLeft = RightToLeft.Yes;
             if (txtMessage != null) txtMessage.RightToLeft = RightToLeft.Yes;
         }

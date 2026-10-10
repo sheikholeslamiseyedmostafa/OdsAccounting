@@ -1,7 +1,8 @@
-using Microsoft.Data.SqlClient;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace OdsAccounting
 {
@@ -15,116 +16,113 @@ namespace OdsAccounting
         public Form1()
         {
             InitializeComponent();
+            Ui.ApplyFont(this);
 
-            // ۱. تبدیل دکمه ورود به دکمه پیش‌‌فرض برای کلید Enter
+            // ۱. تبدیل دکمه ورود به دکمه پیش‌فرض برای کلید Enter
             this.AcceptButton = button2;
 
             // ۲. اجرای کدهای بازیابی اطلاعات هنگام باز شدن فرم
             this.Load += Form1_Load;
         }
 
-        // خواندن اطلاعات ذخیره‌شده (با اصلاح علامت سؤال برای رفع هشدار دات‌نت)
         private void Form1_Load(object? sender, EventArgs e)
         {
             if (Properties.Settings.Default.RemUser)
             {
                 txtUsername.Text = Properties.Settings.Default.SavedUser;
-                checkBox1.Checked = true; // تیک یادآوری نام کاربری
+                checkBox1.Checked = true;
             }
 
             if (Properties.Settings.Default.RemPass)
             {
                 txtPassword.Text = Properties.Settings.Default.SavedPass;
-                checkBox2.Checked = true; // تیک یادآوری کلمه عبور
+                checkBox2.Checked = true;
             }
         }
 
         // دکمه X در نوار عنوان
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void button1_Click(object sender, EventArgs e) => Application.Exit();
 
         // دکمه خروج در پایین فرم
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void button3_Click(object sender, EventArgs e) => Application.Exit();
 
         private void label2_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }
 
-        // دکمه ورود
+        // دکمه ورود: احراز هویت با هش امن PBKDF2 (رمزهای قدیمی متنی در اولین ورود به هش تبدیل می‌شوند)
         private void button2_Click(object sender, EventArgs e)
         {
-            // بررسی خالی نبودن فیلدها
-            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
+            if (username.Length == 0 || password.Length == 0)
             {
                 MessageBox.Show("لطفاً نام کاربری و کلمۀ عبور را وارد کنید.", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string connectionString = "Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
-
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                DataTable t = AppDb.Query(@"SELECT UserID, UserLoginName, UserLoginPassword, PasswordHash, ISNULL(FullName, N'') AS FullName, [Role], IsActive
+                                            FROM ods.SC_Users WHERE UserLoginName = @u",
+                    new SqlParameter("@u", username));
+
+                if (t.Rows.Count == 0 || !Convert.ToBoolean(t.Rows[0]["IsActive"]))
                 {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM [ods].[SC_Users] WHERE UserLoginName = @user AND UserLoginPassword = @pass AND IsActive = 1";
+                    MessageBox.Show("نام کاربری یا کلمۀ عبور اشتباه است.", "خطا در ورود", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                DataRow row = t.Rows[0];
+                string hash = row["PasswordHash"] as string ?? "";
+                string legacy = row["UserLoginPassword"] as string ?? "";
+                bool ok;
+                if (hash.Length > 0)
+                {
+                    ok = PasswordHasher.Verify(password, hash);
+                }
+                else
+                {
+                    ok = legacy.Length > 0 && legacy == password;
+                    if (ok)
                     {
-                        cmd.Parameters.AddWithValue("@user", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
-
-                        int count = (int)cmd.ExecuteScalar();
-
-                        if (count > 0)
-                        {
-                            // مدیریت تنظیمات یادآوری
-                            if (checkBox1.Checked)
-                            {
-                                Properties.Settings.Default.SavedUser = txtUsername.Text;
-                                Properties.Settings.Default.RemUser = true;
-                            }
-                            else
-                            {
-                                Properties.Settings.Default.SavedUser = "";
-                                Properties.Settings.Default.RemUser = false;
-                            }
-
-                            if (checkBox2.Checked)
-                            {
-                                Properties.Settings.Default.SavedPass = txtPassword.Text;
-                                Properties.Settings.Default.RemPass = true;
-                            }
-                            else
-                            {
-                                Properties.Settings.Default.SavedPass = "";
-                                Properties.Settings.Default.RemPass = false;
-                            }
-
-                            // ذخیره نهایی تنظیمات
-                            Properties.Settings.Default.Save();
-
-                            // انتقال به محیط اصلی نرم‌افزار
-                            MainForm mainForm = new MainForm();
-                            mainForm.FormClosed += (s, args) => Application.Exit();
-                            mainForm.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("نام کاربری یا کلمۀ عبور اشتباه است.", "خطا در ورود", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        // مهاجرت: هش امن جایگزین رمز متنی قدیمی شود
+                        AppDb.Exec("UPDATE ods.SC_Users SET PasswordHash = @h, UserLoginPassword = N'' WHERE UserID = @id",
+                            new SqlParameter("@h", PasswordHasher.Hash(password)),
+                            new SqlParameter("@id", Convert.ToInt32(row["UserID"])));
                     }
                 }
+
+                if (!ok)
+                {
+                    MessageBox.Show("نام کاربری یا کلمۀ عبور اشتباه است.", "خطا در ورود", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Session.UserId = Convert.ToInt32(row["UserID"]);
+                Session.UserName = Convert.ToString(row["UserLoginName"]);
+                Session.FullName = Convert.ToString(row["FullName"]);
+                Session.Role = Convert.ToString(row["Role"]);
+
+                // مدیریت تنظیمات یادآوری
+                Properties.Settings.Default.SavedUser = checkBox1.Checked ? username : "";
+                Properties.Settings.Default.RemUser = checkBox1.Checked;
+                Properties.Settings.Default.SavedPass = checkBox2.Checked ? password : "";
+                Properties.Settings.Default.RemPass = checkBox2.Checked;
+                Properties.Settings.Default.Save();
+
+                Session.Audit("LOGIN");
+
+                MainForm mainForm = new MainForm();
+                mainForm.FormClosed += (s, args) => Application.Exit();
+                mainForm.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ارتباط با سرور پایگاه داده برقرار نشد:\n\n" + ex.Message, "خطای ارتباطی", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ارتباط با سرور پایگاه داده برقرار نشد:\n\n" + ex.Message +
+                                "\n\nاز بخش تنظیمات (پس از ورود) یا فایل App.config رشته اتصال را بررسی کنید.",
+                                "خطای ارتباطی", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -146,14 +144,10 @@ namespace OdsAccounting
                 Point currentScreenPos = Cursor.Position;
                 this.Location = new Point(
                     startFormLocation.X + (currentScreenPos.X - startCursorPoint.X),
-                    startFormLocation.Y + (currentScreenPos.Y - startCursorPoint.Y)
-                );
+                    startFormLocation.Y + (currentScreenPos.Y - startCursorPoint.Y));
             }
         }
 
-        private void label1_MouseUp(object sender, MouseEventArgs e)
-        {
-            isDragging = false;
-        }
+        private void label1_MouseUp(object sender, MouseEventArgs e) => isDragging = false;
     }
 }

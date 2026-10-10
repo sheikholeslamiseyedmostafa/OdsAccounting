@@ -94,5 +94,54 @@ namespace OdsAccounting.Properties {
                 this["SelectedYear"] = value;
             }
         }
+    
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string DbMode {
+            get { return ((string)(this["DbMode"])); }
+            set { this["DbMode"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string LocalConnectionString {
+            get { return ((string)(this["LocalConnectionString"])); }
+            set { this["LocalConnectionString"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string CloudConnectionString {
+            get { return ((string)(this["CloudConnectionString"])); }
+            set { this["CloudConnectionString"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string MoadianEndpoint {
+            get { return ((string)(this["MoadianEndpoint"])); }
+            set { this["MoadianEndpoint"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string MoadianTaxId {
+            get { return ((string)(this["MoadianTaxId"])); }
+            set { this["MoadianTaxId"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string MoadianCertThumbprint {
+            get { return ((string)(this["MoadianCertThumbprint"])); }
+            set { this["MoadianCertThumbprint"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string ThemeName {
+            get { return ((string)(this["ThemeName"])); }
+            set { this["ThemeName"] = value; }
+        }
     }
 }

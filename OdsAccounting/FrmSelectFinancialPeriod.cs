@@ -7,7 +7,7 @@ namespace OdsAccounting
 {
     public partial class FrmSelectFinancialPeriod : Form
     {
-        private readonly string connectionString = "Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
+        private string connectionString => AppDb.ConnectionString;
         private string selectedCompanyName;
 
         public FrmSelectFinancialPeriod() : this(Properties.Settings.Default.SelectedCompany)
@@ -17,6 +17,7 @@ namespace OdsAccounting
         public FrmSelectFinancialPeriod(string companyName)
         {
             InitializeComponent();
+            Ui.ApplyFont(this);
             selectedCompanyName = companyName?.Trim() ?? string.Empty;
 
             dataGridView1.MultiSelect = false;

@@ -66,7 +66,7 @@
             button1.BackColor = SystemColors.ActiveCaption;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 10F);
+            button1.Font = new Font("B Nazanin", 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
             button1.Location = new Point(6, 4);
             button1.Name = "button1";
             button1.Size = new Size(69, 46);
@@ -79,7 +79,7 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Dock = DockStyle.Top;
-            label1.Font = new Font("IRANSansWeb(FaNum)", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("B Nazanin", 11F, FontStyle.Bold, GraphicsUnit.Point, 178);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
             label1.Size = new Size(1200, 55);

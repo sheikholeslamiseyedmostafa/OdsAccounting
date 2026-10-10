@@ -20,5 +20,26 @@
     <Setting Name="SelectedYear" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="DbMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Local</Value>
+    </Setting>
+    <Setting Name="LocalConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=SMSHEIKH\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;</Value>
+    </Setting>
+    <Setting Name="CloudConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=tcp:YOUR-SERVER.database.windows.net,1433;Database=ODS_AccountingDB;User ID=YOUR_USER;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=False;</Value>
+    </Setting>
+    <Setting Name="MoadianEndpoint" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://sandbox.tax.gov.ir/req/api/self-tsp/sync/acceptance</Value>
+    </Setting>
+    <Setting Name="MoadianTaxId" Type="System.String" Scope="User">
+      <Value Profile="(Default)"></Value>
+    </Setting>
+    <Setting Name="MoadianCertThumbprint" Type="System.String" Scope="User">
+      <Value Profile="(Default)"></Value>
+    </Setting>
+    <Setting Name="ThemeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

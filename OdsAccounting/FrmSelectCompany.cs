@@ -9,11 +9,12 @@ namespace OdsAccounting
     public partial class FrmSelectCompany : Form
     {
         // رشته اتصال به دیتابیس
-        private string connectionString = "Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
+        private string connectionString => AppDb.ConnectionString;
 
         public FrmSelectCompany()
         {
             InitializeComponent();
+            Ui.ApplyFont(this);
 
             // اتصال خودکار رویداد لود شدن فرم
             this.Load += FrmSelectCompany_Load;

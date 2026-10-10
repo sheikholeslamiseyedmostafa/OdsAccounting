@@ -1,0 +1,202 @@
+// فایل دیزاینر فرم - قابل ویرایش در Visual Studio Designer
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace OdsAccounting
+{
+    partial class FrmChartOfAccounts
+    {
+        private System.ComponentModel.IContainer components = null;
+        private Panel pnlTitle;
+        private FlowLayoutPanel pnlFields;
+        private FlowLayoutPanel pnlButtons;
+        private DataGridView dgvAccounts;
+        private Label lblHeader;
+        private Label lblCode;
+        private TextBox txtCode;
+        private Label lblTitle;
+        private TextBox txtTitle;
+        private Label lblLevel;
+        private ComboBox cmbLevel;
+        private Label lblNature;
+        private ComboBox cmbNature;
+        private CheckBox chkFloating;
+        private CheckBox chkActive;
+        private Button btnNew;
+        private Button btnSave;
+        private Button btnDelete;
+        private Button btnSeed;
+        private Button btnRefresh;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null)) components.Dispose();
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.pnlTitle = new Panel();
+            this.pnlFields = new FlowLayoutPanel();
+            this.pnlButtons = new FlowLayoutPanel();
+            this.dgvAccounts = new DataGridView();
+            this.lblHeader = new Label();
+            this.lblCode = new Label();
+            this.txtCode = new TextBox();
+            this.lblTitle = new Label();
+            this.txtTitle = new TextBox();
+            this.lblLevel = new Label();
+            this.cmbLevel = new ComboBox();
+            this.lblNature = new Label();
+            this.cmbNature = new ComboBox();
+            this.chkFloating = new CheckBox();
+            this.chkActive = new CheckBox();
+            this.btnNew = new Button();
+            this.btnSave = new Button();
+            this.btnDelete = new Button();
+            this.btnSeed = new Button();
+            this.btnRefresh = new Button();
+            this.SuspendLayout();
+            this.pnlTitle.Dock = DockStyle.Top;
+            this.pnlTitle.Height = 56;
+            this.pnlTitle.BackColor = Ui.Primary;
+            this.pnlFields.Dock = DockStyle.Top;
+            this.pnlFields.Height = 110;
+            this.pnlFields.Padding = new Padding(8, 6, 8, 6);
+            this.pnlFields.AutoScroll = false;
+            this.pnlButtons.Dock = DockStyle.Top;
+            this.pnlButtons.Height = 56;
+            this.pnlButtons.Padding = new Padding(8, 6, 8, 6);
+            this.pnlButtons.AutoScroll = false;
+            this.dgvAccounts.Dock = DockStyle.Fill;
+            this.dgvAccounts.ReadOnly = true;
+            this.lblHeader.Dock = DockStyle.Fill;
+            this.lblHeader.Text = "سرفصل حساب‌ها و حساب‌های شناور";
+            this.lblHeader.ForeColor = Color.White;
+            this.lblHeader.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblCode.Text = "کد حساب:";
+            this.lblCode.AutoSize = true;
+            this.lblCode.Margin = new Padding(4, 10, 4, 4);
+            this.txtCode.Width = 120;
+            this.lblTitle.Text = "عنوان حساب:";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Margin = new Padding(4, 10, 4, 4);
+            this.txtTitle.Width = 260;
+            this.lblLevel.Text = "سطح:";
+            this.lblLevel.AutoSize = true;
+            this.lblLevel.Margin = new Padding(4, 10, 4, 4);
+            this.cmbLevel.Width = 120;
+            this.cmbLevel.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.lblNature.Text = "ماهیت:";
+            this.lblNature.AutoSize = true;
+            this.lblNature.Margin = new Padding(4, 10, 4, 4);
+            this.cmbNature.Width = 140;
+            this.cmbNature.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.chkFloating.Text = "حساب شناور است";
+            this.chkFloating.AutoSize = true;
+            this.chkFloating.Margin = new Padding(4, 8, 4, 4);
+            this.chkActive.Text = "فعال";
+            this.chkActive.AutoSize = true;
+            this.chkActive.Margin = new Padding(4, 8, 4, 4);
+            this.btnNew.Text = "جدید";
+            this.btnNew.Width = 130;
+            this.btnNew.Height = 38;
+            this.btnNew.Margin = new Padding(4);
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.BackColor = Color.FromArgb(0, 84, 147);
+            this.btnNew.ForeColor = Color.White;
+            this.btnNew.FlatStyle = FlatStyle.Flat;
+            this.btnNew.Click += BtnNew_Click;
+            this.btnSave.Text = "ذخیره";
+            this.btnSave.Width = 130;
+            this.btnSave.Height = 38;
+            this.btnSave.Margin = new Padding(4);
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = Color.FromArgb(0, 84, 147);
+            this.btnSave.ForeColor = Color.White;
+            this.btnSave.FlatStyle = FlatStyle.Flat;
+            this.btnSave.Click += BtnSave_Click;
+            this.btnDelete.Text = "حذف";
+            this.btnDelete.Width = 130;
+            this.btnDelete.Height = 38;
+            this.btnDelete.Margin = new Padding(4);
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = Color.FromArgb(0, 84, 147);
+            this.btnDelete.ForeColor = Color.White;
+            this.btnDelete.FlatStyle = FlatStyle.Flat;
+            this.btnDelete.Click += BtnDelete_Click;
+            this.btnSeed.Text = "سرفصل پیش‌فرض";
+            this.btnSeed.Width = 160;
+            this.btnSeed.Height = 38;
+            this.btnSeed.Margin = new Padding(4);
+            this.btnSeed.UseVisualStyleBackColor = false;
+            this.btnSeed.BackColor = Color.FromArgb(0, 84, 147);
+            this.btnSeed.ForeColor = Color.White;
+            this.btnSeed.FlatStyle = FlatStyle.Flat;
+            this.btnSeed.Click += BtnSeed_Click;
+            this.btnRefresh.Text = "بازخوانی";
+            this.btnRefresh.Width = 130;
+            this.btnRefresh.Height = 38;
+            this.btnRefresh.Margin = new Padding(4);
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.BackColor = Color.FromArgb(0, 84, 147);
+            this.btnRefresh.ForeColor = Color.White;
+            this.btnRefresh.FlatStyle = FlatStyle.Flat;
+            this.btnRefresh.Click += BtnRefresh_Click;
+            // ---- ساختار کنترل‌ها ----
+            this.Controls.Add(this.pnlTitle);
+            this.Controls.Add(this.pnlFields);
+            this.Controls.Add(this.pnlButtons);
+            this.Controls.Add(this.dgvAccounts);
+            this.pnlTitle.Controls.Add(this.lblHeader);
+            this.pnlFields.Controls.Add(this.lblCode);
+            this.pnlFields.Controls.Add(this.txtCode);
+            this.pnlFields.Controls.Add(this.lblTitle);
+            this.pnlFields.Controls.Add(this.txtTitle);
+            this.pnlFields.Controls.Add(this.lblLevel);
+            this.pnlFields.Controls.Add(this.cmbLevel);
+            this.pnlFields.Controls.Add(this.lblNature);
+            this.pnlFields.Controls.Add(this.cmbNature);
+            this.pnlFields.Controls.Add(this.chkFloating);
+            this.pnlFields.Controls.Add(this.chkActive);
+            this.pnlButtons.Controls.Add(this.btnNew);
+            this.pnlButtons.Controls.Add(this.btnSave);
+            this.pnlButtons.Controls.Add(this.btnDelete);
+            this.pnlButtons.Controls.Add(this.btnSeed);
+            this.pnlButtons.Controls.Add(this.btnRefresh);
+            // ---- ترتیب z-order (برای Dock صحیح) ----
+            this.pnlTitle.SendToBack();
+            this.pnlFields.SendToBack();
+            this.pnlButtons.SendToBack();
+            this.dgvAccounts.SendToBack();
+            this.lblHeader.SendToBack();
+            this.lblCode.SendToBack();
+            this.txtCode.SendToBack();
+            this.lblTitle.SendToBack();
+            this.txtTitle.SendToBack();
+            this.lblLevel.SendToBack();
+            this.cmbLevel.SendToBack();
+            this.lblNature.SendToBack();
+            this.cmbNature.SendToBack();
+            this.chkFloating.SendToBack();
+            this.chkActive.SendToBack();
+            this.btnNew.SendToBack();
+            this.btnSave.SendToBack();
+            this.btnDelete.SendToBack();
+            this.btnSeed.SendToBack();
+            this.btnRefresh.SendToBack();
+            // ---- فرم ----
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.ClientSize = new Size(1200, 720);
+            this.Name = "FrmChartOfAccounts";
+            this.Text = "سرفصل حساب‌ها (کدینگ و حساب شناور)";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.RightToLeft = RightToLeft.Yes;
+            this.RightToLeftLayout = true;
+            this.Load += FrmChartOfAccounts_Load;
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+    }
+}

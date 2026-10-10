@@ -12,12 +12,13 @@ namespace OdsAccounting
     public partial class FrmAddCompany : Form
     {
         private int? companyId = null; // اگر مقدار داشته باشد یعنی در حالت ویرایش هستیم
-        private string connectionString = "Server=SMSHEIKH\\SQL25;Database=ODS_AccountingDB;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;";
+        private string connectionString => AppDb.ConnectionString;
 
         // سازنده حالت ثبت جدید
         public FrmAddCompany()
         {
             InitializeComponent();
+            Ui.ApplyFont(this);
             this.Text = "افزودن شرکت جدید"; // عنوان فرم در حالت افزودن
             InitValidations();
             LoadExistingCompanyNames();
