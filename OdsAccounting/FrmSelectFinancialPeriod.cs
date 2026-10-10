@@ -131,7 +131,7 @@ namespace OdsAccounting
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            DataGridViewRow? selectedRow = GetSelectedRow();
+            DataGridViewRow selectedRow = GetSelectedRow();
             if (selectedRow == null)
             {
                 MessageBox.Show("لطفاً یک دفتر مالی را از جدول انتخاب کنید.", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -162,7 +162,7 @@ namespace OdsAccounting
             CloseCurrentTab();
         }
 
-        private DataGridViewRow? GetSelectedRow()
+        private DataGridViewRow GetSelectedRow()
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -232,7 +232,7 @@ namespace OdsAccounting
                 return string.Empty;
             }
 
-            object? value = row.Cells[columnName].Value;
+            object value = row.Cells[columnName].Value;
             return value == null || value == DBNull.Value ? string.Empty : Convert.ToString(value) ?? string.Empty;
         }
 

@@ -51,6 +51,12 @@ namespace OdsAccounting
             btnMenuUsers.Visible = Session.IsAdmin;
         }
 
+        /// <summary>نمایش تاریخ شمسی امروز در نوار وضعیت.</summary>
+        private void SetPersianDate()
+        {
+            lblDate.Text = "تاریخ: " + Jalali.Format(DateTime.Today);
+        }
+
         private static string RoleTitle(string role)
         {
             switch (role)

@@ -25,7 +25,7 @@ namespace OdsAccounting
             this.Load += Form1_Load;
         }
 
-        private void Form1_Load(object? sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.RemUser)
             {
